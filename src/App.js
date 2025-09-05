@@ -22,8 +22,8 @@ const staticServiceData = [
   {
     header: true,
     sub_header: false,
-    header_title: "test hari node",
-    sub_header_title: "test hari node",
+    header_title: "Test Hari",
+    sub_header_title: "",
     header_id: "1",
     sub_header_id: "",
     sm_number: "",
@@ -37,7 +37,7 @@ const staticServiceData = [
     header: false,
     sub_header: true,
     header_title: "",
-    sub_header_title: "test hari node 2",
+    sub_header_title: "Test Hari Node",
     header_id: "",
     sub_header_id: "1.1",
     sm_number: "",
@@ -55,12 +55,12 @@ const staticServiceData = [
     header_id: "",
     sub_header_id: "",
     sm_number: "1143313",
-    parent_id: "1",
-    service_master: "hire rig onshore",
-    reference_service: "1edp",
+    parent_id: "1.1",
+    service_master: "HIRE RIG ONSHORE",
+    reference_service: "1EDP",
     service_group: "951000",
     standardized_text:
-      "a01 | hire:rig:onshore | 71122900 | b091000 | b.12.29.00 | ea",
+      "A01 | HIRE:RIG:ONSHORE | 71122900 | B091000 | B.12.29.00 | EA",
   },
   {
     header: false,
@@ -70,12 +70,26 @@ const staticServiceData = [
     header_id: "",
     sub_header_id: "",
     sm_number: "1143314",
-    parent_id: "1",
-    service_master: "brkout conc:rf:hndtl:xhl dmp:cs brkactn",
-    reference_service: "1edp",
+    parent_id: "1.1",
+    service_master: "BRKOUT CONC:RF:HNDTL:XHL DMPA:CS BRK&CTN",
+    reference_service: "1EDP",
     service_group: "951000",
     standardized_text:
-      "a01 | hire:rig:onshore | 71122900 | b091000 | b.12.29.00 | ea",
+      "A01 | HIRE:RIG:ONSHORE | 71122900 | B091000 | B.12.29.00 | EA",
+  },
+  {
+    header: false,
+    sub_header: true,
+    header_title: "",
+    sub_header_title: "Test Hari Node 2",
+    header_id: "",
+    sub_header_id: "1.2",
+    sm_number: "",
+    parent_id: "1",
+    service_master: "",
+    reference_service: "",
+    service_group: "",
+    standardized_text: "",
   },
   {
     header: false,
@@ -85,12 +99,12 @@ const staticServiceData = [
     header_id: "",
     sub_header_id: "",
     sm_number: "4000103",
-    parent_id: "1.1",
-    service_master: "aramco vsl-dive med prac - non-saudi",
-    reference_service: "6prs",
+    parent_id: "1.2",
+    service_master: "ARAMCO VSL-DIVE MED PRAC - NON-SAUDI",
+    reference_service: "6PRS",
     service_group: "991000",
     standardized_text:
-      "m58 | hire:mvpr:splzd | 80111620 | m7810 02 | h.11.16.20 | day",
+      "M58 | HIRE:MVPR:SPLZD | 80111620 | M7810.02 | H.11.16.20 | DAY",
   },
   {
     header: false,
@@ -100,12 +114,12 @@ const staticServiceData = [
     header_id: "",
     sub_header_id: "",
     sm_number: "4000104",
-    parent_id: "1.1",
-    service_master: "aramco vsl-dive med prac - saudi",
-    reference_service: "6prs",
+    parent_id: "1.2",
+    service_master: "ARAMCO VSL-DIVE MED PRAC - SAUDI",
+    reference_service: "6PRS",
     service_group: "991000",
     standardized_text:
-      "m58 | hire:mvpr:splzd | 80111620 | m7810 02 | h.11.16.20 | day",
+      "M58 | HIRE:MVPR:SPLZD | 80111620 | M7810.02 | H.11.16.20 | DAY",
   },
 ];
 
@@ -132,7 +146,11 @@ const sampleServiceMasters = [
 ];
 
 // Animated thinking component
-const AnimatedThinking = ({ isThinking = true }) => {
+const AnimatedThinking = ({
+  isThinking = true,
+  isCompact = false,
+  isCompleted = false,
+}) => {
   const [currentStep, setCurrentStep] = useState(0);
   const steps = [
     "Analyzing query context and requirements...",
@@ -143,54 +161,88 @@ const AnimatedThinking = ({ isThinking = true }) => {
   ];
 
   useEffect(() => {
-    if (!isThinking) return;
+    if (!isThinking || isCompleted) return;
 
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length);
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [isThinking, steps.length]);
+  }, [isThinking, isCompleted, steps.length]);
+
+  // If completed, show all steps as done
+  const displayCurrentStep = isCompleted ? steps.length : currentStep;
+
+  if (isCompact) {
+    return (
+      <div className="flex items-center space-x-2 text-sm text-gray-600 py-2">
+        <div className="relative">
+          <Brain className="w-4 h-4 text-blue-600" />
+          {isThinking && !isCompleted && (
+            <div className="absolute -top-0.5 -right-0.5">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+              <div className="absolute top-0 w-2 h-2 bg-green-500 rounded-full"></div>
+            </div>
+          )}
+          {isCompleted && (
+            <div className="absolute -top-0.5 -right-0.5">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            </div>
+          )}
+        </div>
+        <span className={isCompleted ? "text-green-600" : "animate-pulse"}>
+          {isCompleted ? "Analysis completed successfully" : steps[currentStep]}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-start space-x-3">
       <div className="flex-shrink-0">
         <div className="relative">
           <Brain className="w-5 h-5 text-blue-600" />
-          {isThinking && (
+          {isThinking && !isCompleted && (
             <div className="absolute -top-1 -right-1">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
               <div className="absolute top-0 w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+          )}
+          {isCompleted && (
+            <div className="absolute -top-1 -right-1">
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
           )}
         </div>
       </div>
       <div className="flex-1">
         <div className="text-sm text-gray-700 font-medium mb-2">
-          AI Thought Process
+          {isCompleted ? "AI Analysis Complete" : "AI Thought Process"}
         </div>
         <div className="space-y-2">
           {steps.map((step, index) => (
             <div
               key={index}
               className={`flex items-center space-x-2 text-sm transition-all duration-500 ${
-                index <= currentStep ? "text-green-600" : "text-gray-400"
+                index <= displayCurrentStep || isCompleted
+                  ? "text-green-600"
+                  : "text-gray-400"
               }`}
             >
               <div
                 className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                  index < currentStep
+                  index < displayCurrentStep || isCompleted
                     ? "bg-green-500"
-                    : index === currentStep
+                    : index === displayCurrentStep && !isCompleted
                     ? "bg-blue-500 animate-pulse"
                     : "bg-gray-300"
                 }`}
               />
               <span>{step}</span>
-              {index < currentStep && (
+              {(index < displayCurrentStep || isCompleted) && (
                 <Check className="w-4 h-4 text-green-500" />
               )}
-              {index === currentStep && isThinking && (
+              {index === displayCurrentStep && isThinking && !isCompleted && (
                 <Zap className="w-4 h-4 text-blue-500 animate-bounce" />
               )}
             </div>
@@ -285,25 +337,32 @@ const TreeNode = ({
   return (
     <div className="tree-node">
       <div
-        className="tree-row service-row grid grid-cols-5 gap-4 p-3 hover:bg-gray-50 border-b border-gray-100"
-        style={{ paddingLeft: `${level * 20 + 12}px` }}
+        className="tree-row service-row grid gap-2 p-3 hover:bg-gray-50 border-b border-gray-100"
+        style={{
+          paddingLeft: `${level * 20 + 12}px`,
+          gridTemplateColumns: "120px 80px 80px 1fr 80px",
+        }}
       >
-        <div className="font-medium text-gray-800">{item.service_master}</div>
-        <div className="text-gray-600">{item.reference_service}</div>
-        <div className="text-gray-600">{item.service_group}</div>
-        <div className="text-gray-600 text-sm">{item.standardized_text}</div>
-        <div className="flex items-center gap-2">
+        <div className="font-medium text-gray-800 text-sm truncate">
+          {item.service_master}
+        </div>
+        <div className="text-gray-600 text-sm">{item.reference_service}</div>
+        <div className="text-gray-600 text-sm">{item.service_group}</div>
+        <div className="text-gray-600 text-xs break-words">
+          {item.standardized_text}
+        </div>
+        <div className="flex items-center gap-1 justify-end">
           <button
             onClick={() => onEdit(item)}
             className="text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-1 rounded"
           >
-            <Edit3 size={16} />
+            <Edit3 size={14} />
           </button>
           <button
             onClick={() => onDelete(item.sm_number)}
             className="text-red-600 hover:text-red-800 hover:bg-red-50 p-1 rounded"
           >
-            <Minus size={16} />
+            <Minus size={14} />
           </button>
         </div>
       </div>
@@ -315,6 +374,7 @@ const ServiceLineTree = ({ data, onEdit, onDelete, onAdd }) => {
   const [expandedNodes, setExpandedNodes] = useState({
     1: true,
     1.1: true,
+    1.2: true,
   });
 
   const handleToggle = (nodeId) => {
@@ -373,28 +433,37 @@ const ServiceLineTree = ({ data, onEdit, onDelete, onAdd }) => {
   const treeItems = buildTree(data);
 
   return (
-    <div className="tree-container bg-white rounded-lg border border-gray-200 shadow-sm">
-      <div className="tree-header grid grid-cols-5 gap-4 p-4 bg-gradient-to-r from-gray-50 to-gray-100 font-semibold text-gray-700 border-b border-gray-200 rounded-t-lg">
-        <div>Service Master</div>
-        <div>Reference Service</div>
-        <div>Service Group</div>
-        <div>Standardized Text</div>
-        <div>Actions</div>
-      </div>
-      <div className="tree-body max-h-96 overflow-y-auto">
+    <div className="tree-container bg-white rounded-lg border border-gray-200 shadow-sm h-full flex flex-col">
+      <div className="tree-body flex-1 overflow-y-auto">
         {treeItems.map((item, index) => (
-          <TreeNode
+          <React.Fragment
             key={`${
               item.header_id || item.sub_header_id || item.sm_number
             }-${index}`}
-            item={item}
-            level={item.level || 0}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            onAdd={onAdd}
-            expandedNodes={expandedNodes}
-            onToggle={handleToggle}
-          />
+          >
+            {index === 1 && (
+              <div
+                className="tree-header grid gap-4 p-4 bg-gradient-to-r from-gray-50 to-gray-100 font-semibold text-gray-700 border-b border-gray-200 rounded-t-lg text-sm"
+                style={{ gridTemplateColumns: "120px 80px 80px 1fr 80px" }}
+              >
+                <div>Service Master</div>
+                <div>Ref Service</div>
+                <div>Group</div>
+                <div>Standardized Text</div>
+                <div className="text-center">Actions</div>
+              </div>
+            )}
+
+            <TreeNode
+              item={item}
+              level={item.level || 0}
+              onEdit={onEdit}
+              onDelete={onDelete}
+              onAdd={onAdd}
+              expandedNodes={expandedNodes}
+              onToggle={handleToggle}
+            />
+          </React.Fragment>
         ))}
       </div>
     </div>
@@ -471,24 +540,39 @@ export default function KhaberChatbot() {
   const [hasSubmittedPrompt, setHasSubmittedPrompt] = useState(false);
   const [activeTab, setActiveTab] = useState("existing");
   const [chainOfThoughtExpanded, setChainOfThoughtExpanded] = useState(false);
-  const [serviceItemsExpanded, setServiceItemsExpanded] = useState(true);
+  const [serviceItemsExpanded, setServiceItemsExpanded] = useState(false); // Changed to false initially
   const [promptText, setPromptText] = useState("");
   const [knowledgeMode, setKnowledgeMode] = useState("aramco");
   const [serviceData, setServiceData] = useState(staticServiceData);
   const [showSearchDialog, setShowSearchDialog] = useState(false);
   const [editingParentId, setEditingParentId] = useState(null);
   const [isThinking, setIsThinking] = useState(false);
+  const [showResponse, setShowResponse] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState("");
+  const [showChainOfThought, setShowChainOfThought] = useState(false); // New state to control chain of thought visibility
+  const [chainOfThoughtCompleted, setChainOfThoughtCompleted] = useState(false); // New state to track completion
   const fileInputRef = useRef(null);
 
   const handlePromptSubmit = () => {
     if (promptText.trim()) {
+      setSubmittedQuery(promptText);
       setHasSubmittedPrompt(true);
       setIsThinking(true);
+      setShowChainOfThought(true); // Show chain of thought
+      setChainOfThoughtCompleted(false); // Reset completion state
       setChainOfThoughtExpanded(false);
+      setShowResponse(false);
+      setServiceItemsExpanded(false); // Keep service items collapsed initially
+
+      // Clear the input
+      setPromptText("");
+
       // Simulate API response delay
       setTimeout(() => {
         setIsThinking(false);
-      }, 10000);
+        setChainOfThoughtCompleted(true); // Mark chain of thought as completed
+        setShowResponse(true);
+      }, 8000);
     }
   };
 
@@ -540,400 +624,449 @@ export default function KhaberChatbot() {
   const responseAreaWidth = hasSubmittedPrompt ? "w-3/5" : "w-0";
 
   return (
-    <div className="h-screen flex bg-gray-50">
-      {/* Left Sidebar */}
-      <div
-        className={`${sidebarWidth} bg-white border-r border-gray-200 transition-all duration-300 flex flex-col shadow-sm`}
-      >
-        <div className="p-4 border-b border-gray-200">
-          <button
-            onClick={() => setSidebarExpanded(!sidebarExpanded)}
-            className="p-2 hover:bg-gray-100 rounded-md transition-colors"
-          >
-            <MessageSquare size={20} className="text-gray-600" />
-          </button>
-        </div>
-
-        {sidebarExpanded && (
-          <div className="flex-1 p-4">
-            <h3 className="font-semibold text-gray-700 mb-4">Chat History</h3>
-            <div className="space-y-2">
-              <div className="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors">
-                <div className="text-sm font-medium">Previous Chat 1</div>
-                <div className="text-xs text-gray-500">2 hours ago</div>
-              </div>
-              <div className="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors">
-                <div className="text-sm font-medium">Previous Chat 2</div>
-                <div className="text-xs text-gray-500">1 day ago</div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Prompt Area */}
-
-      <div
-        className={`${promptAreaWidth} flex flex-col transition-all duration-300 max-h-screen`}
-      >
-        {!hasSubmittedPrompt ? (
-          // Landing Page - Optimized for single page view
-          <div className="flex flex-col h-screen">
-            {/* Compact Hero Banner */}
-            <div className="bg-gradient-to-r from-blue-100/60 via-green-100/60 to-blue-100/60 border-b border-gray-200 px-6 py-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <span className="text-blue-600 text-sm font-medium">
-                    Aramco Knowledge
-                  </span>
-                  <span className="text-gray-400">|</span>
-                  <span className="text-blue-600 text-sm font-medium">
-                    Non Aramco Knowledge
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MessageSquare size={18} className="text-gray-500" />
-                  <Info size={18} className="text-gray-500" />
-                  <Settings size={18} className="text-gray-500" />
-                </div>
-              </div>
-
-              <div className="mt-3 flex items-center justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">K</span>
-                    </div>
-                    <div>
-                      <h1 className="text-xl font-semibold text-gray-900">
-                        Chat with{" "}
-                        <span className="text-purple-600">KHABER</span>
-                      </h1>
-                      <p className="text-gray-600 text-sm">
-                        Fuel your productivity and make smarter decisions with
-                        ease.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Main Content - Optimized spacing */}
-            <div className="flex-1 px-6 py-4 overflow-y-auto">
-              <div className="max-w-4xl mx-auto">
-                {/* Features List - Compact */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                  <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
-                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    KHABER Knowledge (Default Mode)
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Answers with internal context and business relevance.
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-700 text-sm">
-                        Ask questions about OUs, manuals, and internal
-                        engineering standards.
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-700 text-sm">
-                        Get responses grounded in KHABER's internal documents.
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-700 text-sm">
-                        Tag specific internal documents using "@" to tailor
-                        responses.
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-700 text-sm">
-                        Ask for assistance in writing highlights.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Prompt Input - Fixed at bottom */}
-            <div className="px-6 pb-6 bg-gray-50">
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-white border border-gray-300 rounded-xl shadow-lg">
-                  <textarea
-                    value={promptText}
-                    onChange={(e) => setPromptText(e.target.value)}
-                    placeholder="Ask me about OUs, manuals, engineering standards and procedures and more!"
-                    className="w-full p-4 text-gray-700 resize-none border-0 rounded-t-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    rows="3"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        handlePromptSubmit();
-                      }
-                    }}
-                  />
-                  <div className="flex items-center justify-between p-4 border-t border-gray-200 bg-gray-50 rounded-b-xl">
-                    <div className="flex items-center space-x-4">
-                      {/* Knowledge Mode Selector */}
-                      <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
-                        <button
-                          onClick={() => setKnowledgeMode("aramco")}
-                          className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
-                            knowledgeMode === "aramco"
-                              ? "bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-sm"
-                              : "text-gray-600 hover:text-gray-800 hover:bg-white"
-                          }`}
-                        >
-                          Aramco Knowledge
-                        </button>
-                        <button
-                          onClick={() => setKnowledgeMode("general")}
-                          className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
-                            knowledgeMode === "general"
-                              ? "bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-sm"
-                              : "text-gray-600 hover:text-gray-800 hover:bg-white"
-                          }`}
-                        >
-                          Non Aramco Knowledge
-                        </button>
-                      </div>
-
-                      <button
-                        onClick={() => fileInputRef.current?.click()}
-                        className="flex items-center text-gray-500 hover:text-gray-700 transition-colors p-2 hover:bg-gray-100 rounded-md"
-                      >
-                        <Paperclip size={16} className="mr-1" />
-                        <span className="text-sm">Attach</span>
-                      </button>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        accept=".pdf"
-                        className="hidden"
-                        onChange={(e) => {
-                          console.log("File selected:", e.target.files[0]);
-                        }}
-                      />
-                    </div>
-                    <button
-                      onClick={handlePromptSubmit}
-                      disabled={!promptText.trim()}
-                      className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-5 py-2 rounded-lg hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center font-medium"
-                    >
-                      <Send size={16} className="mr-2" />
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          // Compact Chat Interface
-          <div className="flex flex-col h-screen">
-            {/* Header */}
-            <div className="px-6 py-4 border-b border-gray-200 bg-white">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-gray-800 flex items-center">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-sm">K</span>
-                  </div>
-                  KHABER Chat
-                </h2>
-                <div className="flex items-center space-x-3">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      knowledgeMode === "aramco"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-blue-100 text-blue-800"
-                    }`}
-                  >
-                    {knowledgeMode === "aramco"
-                      ? "Aramco Mode"
-                      : "General Mode"}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Chat Content */}
-            <div className="flex-1 px-6 py-4 overflow-y-auto bg-gray-50">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 max-w-3xl">
-                <div className="text-sm text-blue-800 font-medium mb-2">
-                  Your Query:
-                </div>
-                <div className="text-blue-700">{promptText}</div>
-              </div>
-
-              {/* Response area placeholder */}
-              <div className="bg-white rounded-lg p-4 border border-gray-200 max-w-3xl">
-                <div className="text-gray-600">
-                  Response will appear here...
-                </div>
-              </div>
-            </div>
-
-            {/* Input Area */}
-            <div className="px-6 py-4 border-t border-gray-200 bg-white">
-              <div className="max-w-3xl">
-                <div className="bg-white border border-gray-300 rounded-lg shadow-sm">
-                  <textarea
-                    value={promptText}
-                    onChange={(e) => setPromptText(e.target.value)}
-                    placeholder="Ask another question..."
-                    className="w-full p-4 border-0 rounded-t-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="2"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        handlePromptSubmit();
-                      }
-                    }}
-                  />
-                  <div className="flex items-center justify-between p-4 border-t border-gray-200 bg-gray-50">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
-                        <button
-                          onClick={() => setKnowledgeMode("aramco")}
-                          className={`px-3 py-1 rounded-md transition-all text-sm ${
-                            knowledgeMode === "aramco"
-                              ? "bg-gradient-to-r from-green-500 to-blue-500 text-white"
-                              : "text-gray-600 hover:text-gray-800"
-                          }`}
-                        >
-                          Aramco
-                        </button>
-                        <button
-                          onClick={() => setKnowledgeMode("general")}
-                          className={`px-3 py-1 rounded-md transition-all text-sm ${
-                            knowledgeMode === "general"
-                              ? "bg-gradient-to-r from-green-500 to-blue-500 text-white"
-                              : "text-gray-600 hover:text-gray-800"
-                          }`}
-                        >
-                          Non-Aramco
-                        </button>
-                      </div>
-                      <button className="text-gray-500 hover:text-gray-700 p-2 hover:bg-gray-100 rounded-md transition-colors">
-                        <Paperclip size={16} />
-                      </button>
-                    </div>
-                    <button
-                      onClick={handlePromptSubmit}
-                      disabled={!promptText.trim()}
-                      className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-md hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
-                    >
-                      <Send size={16} className="mr-1" />
-                      Send
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Response Area */}
-      {hasSubmittedPrompt && (
+    <>
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+          from { opacity: 0; max-height: 0; }
+          to { opacity: 1; max-height: 500px; }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
+        .animate-slideDown { animation: slideDown 0.3s ease-out; }
+        .animate-slideUp { animation: slideUp 0.6s ease-out; }
+      `}</style>
+      <div className="h-screen flex bg-gray-50">
+        {/* Left Sidebar */}
         <div
-          className={`${responseAreaWidth} bg-white border-l border-gray-200 flex flex-col transition-all duration-300`}
+          className={`${sidebarWidth} bg-white border-r border-gray-200 transition-all duration-300 flex flex-col shadow-sm`}
         >
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex space-x-1 border-b border-gray-200">
-              <button
-                onClick={() => setActiveTab("existing")}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                  activeTab === "existing"
-                    ? "border-blue-500 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700"
-                }`}
-              >
-                Service Line Item (Existing)
-              </button>
-              <button
-                onClick={() => setActiveTab("new")}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                  activeTab === "new"
-                    ? "border-blue-500 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700"
-                }`}
-              >
-                Service Line Item (New)
-              </button>
-            </div>
+          <div className="p-4 border-b border-gray-200">
+            <button
+              onClick={() => setSidebarExpanded(!sidebarExpanded)}
+              className="p-2 hover:bg-gray-100 rounded-md transition-colors"
+            >
+              <MessageSquare size={20} className="text-gray-600" />
+            </button>
           </div>
 
-          <div className="flex-1 flex flex-col overflow-hidden">
-            {/* Chain of Thought Panel */}
-            <div className="border-b border-gray-200 m-4 mb-0 bg-white rounded-lg shadow-sm">
-              <button
-                onClick={() =>
-                  setChainOfThoughtExpanded(!chainOfThoughtExpanded)
-                }
-                className="w-full flex items-center justify-between p-4 hover:bg-gray-50 rounded-t-lg"
-              >
-                <span className="font-medium text-gray-700">
-                  Chain of Thought
-                </span>
-                {chainOfThoughtExpanded ? (
-                  <ChevronDown size={20} />
-                ) : (
-                  <ChevronRight size={20} />
-                )}
-              </button>
-              {chainOfThoughtExpanded && (
-                <div className="p-6 bg-gray-50 border-t border-gray-200 rounded-b-lg">
-                  <AnimatedThinking isThinking={isThinking} />
+          {sidebarExpanded && (
+            <div className="flex-1 p-4">
+              <h3 className="font-semibold text-gray-700 mb-4">Chat History</h3>
+              <div className="space-y-2">
+                <div className="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors">
+                  <div className="text-sm font-medium">Previous Chat 1</div>
+                  <div className="text-xs text-gray-500">2 hours ago</div>
                 </div>
-              )}
-            </div>
-
-            {/* Service Line Items Panel */}
-            <div className="flex-1 flex flex-col m-4 bg-white rounded-lg shadow-sm overflow-hidden">
-              <button
-                onClick={() => setServiceItemsExpanded(!serviceItemsExpanded)}
-                className="flex items-center justify-between p-4 hover:bg-gray-50 border-b border-gray-200 rounded-t-lg"
-              >
-                <span className="font-medium text-gray-700">
-                  Service Line Items
-                </span>
-                {serviceItemsExpanded ? (
-                  <ChevronDown size={20} />
-                ) : (
-                  <ChevronRight size={20} />
-                )}
-              </button>
-              {serviceItemsExpanded && (
-                <div className="flex-1 p-4 overflow-hidden">
-                  <ServiceLineTree
-                    data={serviceData}
-                    onEdit={handleEditService}
-                    onDelete={handleDeleteService}
-                    onAdd={handleAddService}
-                  />
+                <div className="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors">
+                  <div className="text-sm font-medium">Previous Chat 2</div>
+                  <div className="text-xs text-gray-500">1 day ago</div>
                 </div>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      )}
 
-      {/* Service Master Search Dialog */}
-      <ServiceMasterSearchDialog
-        isOpen={showSearchDialog}
-        onClose={() => setShowSearchDialog(false)}
-        onSelect={handleServiceMasterSelect}
-      />
-    </div>
+        {/* Prompt Area */}
+
+        <div
+          className={`${promptAreaWidth} flex flex-col transition-all duration-300 max-h-screen`}
+        >
+          {!hasSubmittedPrompt ? (
+            // Landing Page - Optimized for single page view
+            <div className="flex flex-col h-screen">
+              {/* Compact Hero Banner */}
+              <div className="bg-gradient-to-r from-blue-100/60 via-green-100/60 to-blue-100/60 border-b border-gray-200 px-6 py-4 min-h-[15vh]">
+                <div className="flex items-center justify-end">
+                  <div className="flex space-x-3">
+                    {/* <MessageSquare size={18} className="text-gray-500" /> */}
+                    <Info size={18} className="text-gray-500" />
+                    <Settings size={18} className="text-gray-500" />
+                  </div>
+                </div>
+
+                <div className="mt-8 flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      {/* <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">K</span> */}
+                      <img
+                        src="khaber-logo.png"
+                        alt="KHABER"
+                        className="h-24 w-auto"
+                      />
+                      {/* </div> */}
+                      <div>
+                        <h1 className="text-4xl font-semibold text-gray-900">
+                          Chat with{" "}
+                          <span className="text-purple-600">KHABER</span>
+                        </h1>
+                        <p className="text-gray-600 text-sm">
+                          Fuel your productivity and make smarter decisions with
+                          ease.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Content - Optimized spacing */}
+              <div className="flex-1 px-4 py-6 overflow-y-auto">
+                <div className="max-w-4xl mx-auto">
+                  {/* Features List - Compact */}
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                    <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
+                      <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                      KHABER Knowledge (Default Mode)
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Answers with internal context and business relevance.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex items-start">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">
+                          Ask questions about OUs, manuals, and internal
+                          engineering standards.
+                        </span>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">
+                          Get responses grounded in KHABER's internal documents.
+                        </span>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">
+                          Tag specific internal documents using "@" to tailor
+                          responses.
+                        </span>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">
+                          Ask for assistance in writing highlights.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prompt Input - Fixed at bottom */}
+              <div className="px-6 pb-6 bg-gray-50">
+                <div className="max-w-4xl mx-auto">
+                  <div className="bg-white border border-gray-300 rounded-xl shadow-lg">
+                    <textarea
+                      value={promptText}
+                      onChange={(e) => setPromptText(e.target.value)}
+                      placeholder="Ask me about OUs, manuals, engineering standards and procedures and more!"
+                      className="w-full p-4 text-gray-700 resize-none border-0 rounded-t-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      rows="3"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          handlePromptSubmit();
+                        }
+                      }}
+                    />
+                    <div className="flex items-center justify-between p-4 border-t border-gray-200 bg-gray-50 rounded-b-xl">
+                      <div className="flex items-center space-x-4">
+                        {/* Knowledge Mode Selector */}
+                        <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
+                          <button
+                            onClick={() => setKnowledgeMode("aramco")}
+                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
+                              knowledgeMode === "aramco"
+                                ? "bg-gradient-to-r from-green-400 to-blue-400 text-white shadow-sm"
+                                : "text-gray-600 hover:text-gray-800 hover:bg-white"
+                            }`}
+                          >
+                            Aramco Knowledge
+                          </button>
+                          <button
+                            onClick={() => setKnowledgeMode("general")}
+                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
+                              knowledgeMode === "general"
+                                ? "bg-gradient-to-r from-green-400 to-blue-400 text-white shadow-sm"
+                                : "text-gray-600 hover:text-gray-800 hover:bg-white"
+                            }`}
+                          >
+                            Non Aramco Knowledge
+                          </button>
+                        </div>
+
+                        <button
+                          onClick={() => fileInputRef.current?.click()}
+                          className="flex items-center text-gray-500 hover:text-gray-700 transition-colors p-2 hover:bg-gray-100 rounded-md"
+                        >
+                          <Paperclip size={16} className="mr-1" />
+                          <span className="text-sm">Attach</span>
+                        </button>
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept=".pdf"
+                          className="hidden"
+                          onChange={(e) => {
+                            console.log("File selected:", e.target.files[0]);
+                          }}
+                        />
+                      </div>
+                      <button
+                        onClick={handlePromptSubmit}
+                        disabled={!promptText.trim()}
+                        className="bg-[#0070f2] hover:bg-[#005bb5] text-white px-5 py-2 rounded-lg hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center font-medium"
+                      >
+                        <Send size={16} className="mr-2" />
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Compact Chat Interface
+            <div className="flex flex-col h-screen">
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-gray-200 bg-white">
+                <div className="flex items-center justify-between">
+                  <img
+                    src="khaber-logo.png"
+                    alt="KHABER"
+                    className="w-auto h-12"
+                  />
+                  <div className="flex items-center space-x-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        knowledgeMode === "aramco"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-blue-100 text-blue-800"
+                      }`}
+                    >
+                      {knowledgeMode === "aramco"
+                        ? "Aramco Mode"
+                        : "General Mode"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chat Content */}
+              <div className="flex-1 px-6 py-4 overflow-y-auto bg-gray-50">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 max-w-3xl">
+                  <div className="text-sm text-blue-800 font-medium mb-2">
+                    Your Query:
+                  </div>
+                  <div className="text-blue-700">{submittedQuery}</div>
+                </div>
+
+                {/* Chain of Thought in Prompt Area - Keep visible even after completion */}
+                {showChainOfThought && (
+                  <div className="bg-white rounded-lg p-4 border border-gray-200 max-w-3xl mb-4 animate-fadeIn">
+                    <div className="border-b border-gray-200 pb-2 mb-4">
+                      <button
+                        onClick={() =>
+                          setChainOfThoughtExpanded(!chainOfThoughtExpanded)
+                        }
+                        className="w-full flex items-center justify-between hover:bg-gray-50 rounded p-2"
+                      >
+                        <span className="font-medium text-gray-700 flex items-center">
+                          <Brain className="w-4 h-4 mr-2 text-blue-600" />
+                          {chainOfThoughtCompleted
+                            ? "AI Analysis Complete"
+                            : "AI is thinking..."}
+                        </span>
+                        {chainOfThoughtExpanded ? (
+                          <ChevronDown size={16} />
+                        ) : (
+                          <ChevronRight size={16} />
+                        )}
+                      </button>
+                      {!chainOfThoughtExpanded && (
+                        <div className="mt-2">
+                          <AnimatedThinking
+                            isThinking={isThinking}
+                            isCompleted={chainOfThoughtCompleted}
+                            isCompact={true}
+                          />
+                        </div>
+                      )}
+                    </div>
+                    {chainOfThoughtExpanded && (
+                      <div className="animate-slideDown">
+                        <AnimatedThinking
+                          isThinking={isThinking}
+                          isCompleted={chainOfThoughtCompleted}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Response area */}
+                {showResponse && (
+                  <div className="bg-white rounded-lg p-4 border border-gray-200 max-w-3xl animate-slideUp">
+                    <div className="flex items-center mb-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                      <div className="text-sm font-medium text-gray-700">
+                        Response Ready
+                      </div>
+                    </div>
+                    <div className="text-gray-600">
+                      Analysis completed successfully. Service line items have
+                      been generated and are available in the response panel.
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Input Area */}
+              <div className="px-6 py-4 border-t border-gray-200 bg-white">
+                <div className="max-w-3xl">
+                  <div className="bg-white border border-gray-300 rounded-lg shadow-sm">
+                    <textarea
+                      value={promptText}
+                      onChange={(e) => setPromptText(e.target.value)}
+                      placeholder="Ask another question..."
+                      className="w-full p-4 border-0 rounded-t-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      rows="2"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          handlePromptSubmit();
+                        }
+                      }}
+                    />
+                    <div className="flex items-center justify-between p-4 border-t border-gray-200 bg-gray-50">
+                      <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
+                          <button
+                            onClick={() => setKnowledgeMode("aramco")}
+                            className={`px-3 py-1 rounded-md transition-all text-sm ${
+                              knowledgeMode === "aramco"
+                                ? "bg-gradient-to-r from-green-500 to-blue-500 text-white"
+                                : "text-gray-600 hover:text-gray-800"
+                            }`}
+                          >
+                            Aramco
+                          </button>
+                          <button
+                            onClick={() => setKnowledgeMode("general")}
+                            className={`px-3 py-1 rounded-md transition-all text-sm ${
+                              knowledgeMode === "general"
+                                ? "bg-gradient-to-r from-green-500 to-blue-500 text-white"
+                                : "text-gray-600 hover:text-gray-800"
+                            }`}
+                          >
+                            Non-Aramco
+                          </button>
+                        </div>
+                        <button className="text-gray-500 hover:text-gray-700 p-2 hover:bg-gray-100 rounded-md transition-colors">
+                          <Paperclip size={16} />
+                        </button>
+                      </div>
+                      <button
+                        onClick={handlePromptSubmit}
+                        disabled={!promptText.trim()}
+                        className="bg-[#0070f2] hover:bg-[#005bb5] text-white px-4 py-2 rounded-md hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                      >
+                        <Send size={16} className="mr-1" />
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Response Area */}
+        {hasSubmittedPrompt && (
+          <div
+            className={`${responseAreaWidth} bg-white border-l border-gray-200 flex flex-col transition-all duration-500 transform ${
+              showResponse
+                ? "translate-x-0 opacity-100"
+                : "translate-x-4 opacity-70"
+            }`}
+          >
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex space-x-1 border-b border-gray-200">
+                <button
+                  onClick={() => setActiveTab("existing")}
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+                    activeTab === "existing"
+                      ? "border-blue-500 text-blue-600"
+                      : "border-transparent text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  Service Line Item (Existing)
+                </button>
+                <button
+                  onClick={() => setActiveTab("new")}
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+                    activeTab === "new"
+                      ? "border-blue-500 text-blue-600"
+                      : "border-transparent text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  Service Line Item (New)
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 flex flex-col overflow-hidden">
+              {/* Service Line Items Panel */}
+              <div className="flex-1 flex flex-col m-4 bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                <button
+                  onClick={() => setServiceItemsExpanded(!serviceItemsExpanded)}
+                  className="flex items-center justify-between p-4 hover:bg-gray-50 border-b border-gray-200 rounded-t-lg"
+                >
+                  <span className="font-medium text-gray-700 flex items-center">
+                    {showResponse && (
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                    )}
+                    Service Line Items
+                  </span>
+                  {serviceItemsExpanded ? (
+                    <ChevronDown size={20} />
+                  ) : (
+                    <ChevronRight size={20} />
+                  )}
+                </button>
+                {serviceItemsExpanded && (
+                  <div className="flex-1 p-4 overflow-hidden">
+                    <ServiceLineTree
+                      data={serviceData}
+                      onEdit={handleEditService}
+                      onDelete={handleDeleteService}
+                      onAdd={handleAddService}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Service Master Search Dialog */}
+        <ServiceMasterSearchDialog
+          isOpen={showSearchDialog}
+          onClose={() => setShowSearchDialog(false)}
+          onSelect={handleServiceMasterSelect}
+        />
+      </div>
+    </>
   );
 }
