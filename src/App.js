@@ -444,7 +444,7 @@ const CompactPipelineHistory = ({
 
   const latestItems = historyItems;
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200 max-w-3xl mb-4 animate-fadeIn">
+    <div className="bg-white rounded-lg p-4 border border-gray-200 max-w-3xl my-4 animate-fadeIn">
       <div className="border-b border-gray-200 pb-2 mb-4">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
@@ -484,12 +484,12 @@ const CompactPipelineHistory = ({
                     >
                       View Details
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => onRemoveItem(historyItem.id)}
                       className="text-gray-400 hover:text-red-600 p-1 hover:bg-red-50 rounded-md transition-colors"
                     >
                       <X size={12} />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 
@@ -2040,12 +2040,12 @@ export default function KhaberChatbot() {
       setPromptText("");
 
       // Show success message
-      alert(
-        `Successfully regenerated ${selectedIndices.length} service item(s) based on your question.`
-      );
+      //   alert(
+      //     `Successfully regenerated ${selectedIndices.length} service item(s) based on your question.`
+      //   );
     } catch (error) {
       console.error("Error regenerating items:", error);
-      alert("Failed to regenerate service items. Please try again.");
+      //   alert("Failed to regenerate service items. Please try again.");
 
       // Clear loading states
       setIsRegeneratingItems({});
@@ -2617,8 +2617,8 @@ export default function KhaberChatbot() {
                       onChange={(e) => setPromptText(e.target.value)}
                       placeholder={
                         Object.keys(selectedItems).length > 0
-                          ? "Ask a question about the selected service items to get AI-enhanced responses..."
-                          : "Ask another question..."
+                          ? "Select service line items above, then ask questions to get AI-enhanced responses..."
+                          : "Select line items from the selection screen, then ask your enhancement question here..."
                       }
                       className="w-full p-4 border-0 rounded-t-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                       rows="2"
