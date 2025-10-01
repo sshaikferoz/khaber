@@ -12,6 +12,13 @@ import {
 } from "lucide-react";
 import { LoadingSpinner } from "../Skeletons";
 
+// Utility function to truncate leading zeros from service master number
+const truncateServiceNumber = (source) => {
+  if (!source) return "N/A";
+  // Remove leading zeros by converting to number and back to string
+  return parseInt(source, 10).toString();
+};
+
 // Carousel Component for Existing Services
 export const ExistingServicesCarousel = ({
   services,
@@ -30,12 +37,22 @@ export const ExistingServicesCarousel = ({
     );
   }
 
+  const currentService = services[selectedIndex];
+
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-medium text-gray-600">
-          {services[selectedIndex]?.sm_no}
-        </span>
+        <div className="flex items-center space-x-2">
+          <span className="text-xs font-medium text-gray-600">
+            SM: {truncateServiceNumber(currentService?.metadata?.source)}
+          </span>
+          <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+            {currentService?.relevance}
+          </span>
+          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+            Rank: {currentService?.rank}
+          </span>
+        </div>
         <div className="flex items-center space-x-1">
           <button
             onClick={() => onSelect(Math.max(0, selectedIndex - 1))}
@@ -58,8 +75,9 @@ export const ExistingServicesCarousel = ({
           </button>
         </div>
       </div>
+
       <div className="text-xs text-gray-600 bg-gray-50 rounded p-2 min-h-24 overflow-y-auto border">
-        {services[selectedIndex]?.text}
+        {currentService?.service_text}
       </div>
     </div>
   );
@@ -110,6 +128,7 @@ export const SelectedItemsCard = ({
                   <th className="text-left py-2 text-blue-800">Item</th>
                   <th className="text-left py-2 text-blue-800">Type</th>
                   <th className="text-left py-2 text-blue-800">Selection</th>
+                  <th className="text-left py-2 text-blue-800">SM Number</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,6 +154,20 @@ export const SelectedItemsCard = ({
                           ? "New SM"
                           : "Not Selected"}
                       </span>
+                    </td>
+                    <td className="py-2 text-xs text-gray-600">
+                      {item.choice === "matching" &&
+                      textGenerations[index]?.existing?.[
+                        item.selectedServiceIndex
+                      ]
+                        ? truncateServiceNumber(
+                            textGenerations[index].existing[
+                              item.selectedServiceIndex
+                            ].metadata?.source
+                          )
+                        : item.choice === "new"
+                        ? "New Service"
+                        : "-"}
                     </td>
                   </tr>
                 ))}

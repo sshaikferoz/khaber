@@ -1,5 +1,12 @@
 import React from "react";
 
+// Utility function to truncate leading zeros from service master number
+const truncateServiceNumber = (source) => {
+  if (!source) return "N/A";
+  // Remove leading zeros by converting to number and back to string
+  return parseInt(source, 10).toString();
+};
+
 // Visual Response Components
 export const CategoriesView = ({ response }) => (
   <div className="space-y-4">
@@ -144,17 +151,38 @@ export const TextGenerationView = ({ response }) => (
         <div className="bg-white rounded-lg p-4 border border-orange-100">
           <h5 className="font-medium text-gray-800 mb-3">Existing Services</h5>
           <div className="space-y-2">
-            {response.existing_services?.map((service, index) => (
+            {response.existing?.map((service, index) => (
               <div key={index} className="bg-gray-50 rounded p-3 text-sm">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-800">
-                    {service.sm_no}
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center space-x-2">
+                    <span className="font-medium text-gray-800">
+                      SM: {truncateServiceNumber(service.metadata?.source)}
+                    </span>
+                    <span className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                      Rank: {service.rank}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                      {service.relevance}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-gray-700 mb-2">{service.service_text}</div>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded">
+                    {service.metadata?.service_cat}
                   </span>
-                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
-                    {service.score}
+                  <span className="bg-green-100 text-green-700 px-2 py-1 rounded">
+                    {service.metadata?.service_class}
+                  </span>
+                  <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">
+                    {service.metadata?.service_group}
+                  </span>
+                  <span className="bg-red-100 text-red-700 px-2 py-1 rounded">
+                    {service.metadata?.service_type}
                   </span>
                 </div>
-                <div className="text-gray-700">{service.text}</div>
               </div>
             ))}
           </div>

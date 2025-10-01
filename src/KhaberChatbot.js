@@ -724,6 +724,46 @@ export default function KhaberChatbot() {
     }));
   };
 
+  const handleUpdateGeneratedText = (index, newText) => {
+    // Update the textGenerations state
+    setTextGenerations((prev) => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], new: newText };
+      return updated;
+    });
+
+    // Also update the current version if versions exist
+    if (versions.length > 0) {
+      setVersions((prev) => {
+        const updated = [...prev];
+        if (updated[currentVersion]) {
+          const updatedTextGenerations = [
+            ...(updated[currentVersion].textGenerations || []),
+          ];
+          updatedTextGenerations[index] = {
+            ...updatedTextGenerations[index],
+            new: newText,
+          };
+          updated[currentVersion] = {
+            ...updated[currentVersion],
+            textGenerations: updatedTextGenerations,
+          };
+        }
+        return updated;
+      });
+    }
+
+    // Optionally, you can also update the apiResponses to keep everything in sync
+    setApiResponses((prev) => {
+      if (prev.text && prev.text[index]) {
+        const updatedText = [...prev.text];
+        updatedText[index] = { ...updatedText[index], new: newText };
+        return { ...prev, text: updatedText };
+      }
+      return prev;
+    });
+  };
+
   const handleCarouselSelect = (itemIndex, carouselIndex) => {
     setCarouselSelections((prev) => ({
       ...prev,
@@ -738,8 +778,7 @@ export default function KhaberChatbot() {
         const itemIndex = parseInt(index);
         const carouselIndex = carouselSelections[itemIndex] || 0;
         const textGen = textGenerations[itemIndex];
-        const selectedExistingService =
-          textGen?.existing_services?.[carouselIndex];
+        const selectedExistingService = textGen?.existing?.[carouselIndex];
 
         return {
           sno: itemIndex + 1,
@@ -1390,6 +1429,7 @@ export default function KhaberChatbot() {
                       carouselSelections={carouselSelections}
                       onCarouselSelect={handleCarouselSelect}
                       onAskAboutItems={handleAskAboutItems}
+                      onUpdateGeneratedText={handleUpdateGeneratedText} // Add this line
                     />
                   ) : currentStep >= 0 ? (
                     <SkeletonTable rows={3} />
