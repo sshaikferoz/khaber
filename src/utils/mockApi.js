@@ -1,6 +1,6 @@
 import { CLOUDERA_KHABER_CHAT_URL } from "./constants";
 
-// Mock API utilities and functions
+// Utility to remove duplicate service classes
 export const removeDuplicateServiceClasses = (response, dedupeBy = "Class") => {
   if (!response || !response.llm_class || !Array.isArray(response.llm_class)) {
     return response;
@@ -44,6 +44,7 @@ export const removeDuplicateServiceClasses = (response, dedupeBy = "Class") => {
   };
 };
 
+// Generate multiple existing services
 const generateMultipleExistingServices = (count = 5) => {
   const templates = [
     "CLEAN TANK, Type Cylindrical, Sphere, Dome Roof, Cone Roof, Vertical Or Horizontal, Intended Application Is Piping Within Diked Area, Method Or Procedure Grit Blast, Shape All Types Of Tank (cylindrical, Sphere, Dome Roof, Cone Roof, Etc Vertical Or Horizontal), With A Finish Of Sa-3, Surface Uncoated, Rate Type For Remuneration Will Be Per Square Meter, Material Will Be Provided By Saudi Aramco, Applicable Standard Aes-h-001, Aes-h-100 And/or Aes-h-101, Additional Activity Includes Clean External Or Internal, Remove Rust, Dust, Product, Scale, Etc, Including Disposal Of Grit And All Refuse",
@@ -81,38 +82,199 @@ const generateMultipleExistingServices = (count = 5) => {
   }));
 };
 
-// Mock Service Master Creation Response Generator
+// Generate mock service master response
 const generateServiceMasterResponse = (payload) => {
-  const serviceMasterId = `SM${String(Date.now()).slice(-8)}${Math.floor(
-    Math.random() * 100
-  )
-    .toString()
-    .padStart(2, "0")}`;
-
   return {
-    service_master_id: serviceMasterId,
-    status: "created",
-    created_at: new Date().toISOString(),
-    service_text: payload.new,
-    metadata: {
-      category: "3POM", // Plant Operations & Maintenance
-      class: "SERVICE_MASTER",
-      group: "900000", // General Services
-      type: "NEW",
-      created_by: "KHABER_AI",
-      validation_status: "pending",
+    data: {
+      d: {
+        Action: "SUBMIT",
+        CrDesc: "",
+        CrNo: "",
+        CrStatDesc: "To Be Evaluated",
+        CrTypeDesc: "Service Master Mass Upload",
+        Ekgrp: "",
+        FileData: "",
+        FwdUser: "",
+        IsAdmin: "",
+        NavHeader: {
+          results: [
+            {
+              Action: "SUBMIT",
+              Asnum: "B$1",
+              Astyp: "",
+              AstypTxt: "",
+              Class: "MAINT:TNK",
+              Ernam: "",
+              Isic: "C331101",
+              Lbnum: "",
+              LbnumTxt: "",
+              Longtxt: "",
+              Lvorm: "",
+              Matkl: "",
+              MatklTxt: "",
+              Meins: "M3",
+              Mstde: "",
+              NavDup: {
+                results: [],
+              },
+              NavItem: {
+                results: [
+                  {
+                    Asnum: "B$1",
+                    Atbez: "TYPE",
+                    Atnam: "TYPE",
+                    Atwrt: payload?.attributes?.TYPE || "Storage Tank",
+                    Chlpt:
+                      "Enter the specific type of Tank like Storage Tank, Fuel Tank, Pressure Tank, etc.",
+                    Class: "MAINT:TNK",
+                    Keychr: "YES",
+                    Meins: "",
+                    Posnr: 1,
+                    Refclass: "",
+                    Reqrd: "YES",
+                    Selected: false,
+                  },
+                  {
+                    Asnum: "B$1",
+                    Atbez: "APPLICATION",
+                    Atnam: "APPLN",
+                    Atwrt:
+                      payload?.attributes?.APPLICATION ||
+                      "Cleaning & Maintenance",
+                    Chlpt:
+                      "An indication of the intended use or purpose of performing the specified activity.",
+                    Class: "MAINT:TNK",
+                    Keychr: "NO",
+                    Meins: "",
+                    Posnr: 2,
+                    Refclass: "",
+                    Reqrd: "NO",
+                    Selected: false,
+                  },
+                  {
+                    Asnum: "B$1",
+                    Atbez: "METHOD",
+                    Atnam: "MTHD",
+                    Atwrt: payload?.attributes?.METHOD || "Manual",
+                    Chlpt:
+                      "Explains the means or process or manner or procedure or systematic way of accomplishing a task.",
+                    Class: "MAINT:TNK",
+                    Keychr: "NO",
+                    Meins: "",
+                    Posnr: 3,
+                    Refclass: "",
+                    Reqrd: "NO",
+                    Selected: false,
+                  },
+                  {
+                    Asnum: "B$1",
+                    Atbez: "ACTIVITY TYPE CODE",
+                    Atnam: "ACTVTY_TYPE_CODE",
+                    Atwrt: payload?.attributes?.ACTVTY_TYPE_CODE || "",
+                    Chlpt:
+                      "Indicates an Aramco specific activity code to identify the activity covered under the service.",
+                    Class: "MAINT:TNK",
+                    Keychr: "NO",
+                    Meins: "",
+                    Posnr: 4,
+                    Refclass: "",
+                    Reqrd: "NO",
+                    Selected: false,
+                  },
+                  {
+                    Asnum: "B$1",
+                    Atbez: "MATERIAL",
+                    Atnam: "MTRL",
+                    Atwrt: payload?.attributes?.MATERIAL || "Steel",
+                    Chlpt:
+                      "The predominant material that the item is made from like Steel, Aluminum, Plastic, etc.",
+                    Class: "MAINT:TNK",
+                    Keychr: "NO",
+                    Meins: "",
+                    Posnr: 7,
+                    Refclass: "",
+                    Reqrd: "NO",
+                    Selected: false,
+                  },
+                  {
+                    Asnum: "B$1",
+                    Atbez: "RATE TYPE",
+                    Atnam: "RATE_TYPE",
+                    Atwrt: payload?.attributes?.RATE_TYPE || "Fixed",
+                    Chlpt:
+                      "An indication of the method used for calculating the compensation or price payable for the service activity.",
+                    Class: "MAINT:TNK",
+                    Keychr: "YES",
+                    Meins: "",
+                    Posnr: 17,
+                    Refclass: "",
+                    Reqrd: "YES",
+                    Selected: false,
+                  },
+                ],
+              },
+              NavReturn: {
+                results: [
+                  {
+                    Asnum: "",
+                    Message: `${Math.floor(
+                      10000 + Math.random() * 90000
+                    )}- Change Request ID created for the item - 1`,
+                    Type: "S",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Refasnum: "",
+        RejReason: "",
+        SubAction: "",
+        UsmdCreatedBy: "GURUNAPX",
+        UsmdCreqStatus: "00",
+        UsmdCreqType: "ZSMFUD1B",
+        UsmdCrequest: `${Math.floor(10000 + Math.random() * 90000)}`,
+        WfNotes: "",
+        Workflow: "",
+      },
     },
-    additional_info:
-      "Service Master created successfully via KHABER AI pipeline",
-    workflow_id: `WF-${Date.now()}`,
-    approval_required: true,
-    estimated_approval_time: "2-3 business days",
+    status: "success",
   };
 };
 
-// Enhanced Mock API with carousel data and service master creation
+// Generate regenerated text based on attributes
+const generateRegeneratedText = (attributes) => {
+  const parts = [];
+
+  if (attributes.TYPE) {
+    parts.push(`MAINTAIN ${attributes.TYPE.toUpperCase()}`);
+  }
+
+  if (attributes.APPLICATION) {
+    parts.push(`Intended Application Is ${attributes.APPLICATION}`);
+  }
+
+  if (attributes.METHOD) {
+    parts.push(`Method Or Procedure ${attributes.METHOD}`);
+  }
+
+  if (attributes.MATERIAL) {
+    parts.push(`Material ${attributes.MATERIAL}`);
+  }
+
+  if (attributes.RATE_TYPE) {
+    parts.push(`Rate Type For Remuneration Will Be ${attributes.RATE_TYPE}`);
+  }
+
+  // Add some generic text
+  parts.push("With All Necessary Safety Measures");
+  parts.push("According To Industry Standards");
+
+  return parts.join(", ");
+};
+
+// Enhanced Mock API with regenerate-text support
 export const mockAPICall = async (endpoint, data, delay = 2000) => {
-  // Simulate network delay
   await new Promise((resolve) => setTimeout(resolve, delay));
 
   switch (endpoint) {
@@ -155,16 +317,6 @@ export const mockAPICall = async (endpoint, data, delay = 2000) => {
                 "The SOW outlines the need for comprehensive facility management.",
               service_type: "FACILITY SERVICES",
             },
-            {
-              classes: [
-                "DEVELOP:SOFTWARE:DIGITAL",
-                "IMPLEMENT:SOLUTION",
-                "INTEGRATE:SYSTEM",
-              ],
-              reason:
-                "The SOW emphasizes the implementation of digital solutions.",
-              service_type: "SOFTWARE SOLUTION SERVICES",
-            },
           ],
         },
         status: "success",
@@ -187,26 +339,38 @@ export const mockAPICall = async (endpoint, data, delay = 2000) => {
             Kltxt: "REPAIR:EQUIPMENT:MECHANICAL",
             Type: "EQUIPMENT MAINTENANCE SERVICES",
           },
-          {
-            Category: "Admin. & General Services",
-            Class: "MAINT:FCIL:EQP",
-            Group: "810 - Facility Management",
-            Kltxt: "MAINTAIN:FACILITY:EQUIPMENT",
-            Type: "FACILITY SERVICES",
-          },
         ],
         status: "success",
       };
 
     case "generate-text":
       return {
-        create_text: {},
+        create_text: {
+          TYPE: "Storage Tank",
+          APPLICATION: "Cleaning & Maintenance",
+          METHOD: "Manual",
+          RATE_TYPE: "Fixed",
+          MATERIAL: "Steel",
+          SHAPE: "Cylindrical",
+          ROOF_TYPE: "Flat",
+          WALL_TYPE: "Load-Bearing",
+        },
         existing: generateMultipleExistingServices(5),
         new: "MAINTAIN TANK, Type Industrial Storage Tank, Intended Application Is Maintenance And Inspection Of Large Industrial Storage Tanks, Method Or Procedure Scheduled Maintenance, Preventive Care, Structural Inspection, Rate Type For Remuneration Will Be Per Square Meter, Material Will Be Provided By Saudi Aramco, Tools Will Be Provided By Contractor, Transportation Will Be Arranged By Contractor, Operating Location Or Area Or Region Saudi Arabia (Dhahran, Ras Tanura, Jubail, Yanbu), Materials Which Are Included Are Maintenance Supplies, Inspection Equipment, Safety Gear, Manpower Will Be Provided By Contractor, Applicable Standard API 650, API 653, ASME Standards, Additional Information Tank Types Include: Crude Oil, Refined Products, Chemical Storage, Scope Will Be Complete Tank Maintenance Program, Additional Activity Includes Condition Assessment, Cleaning, Coating Inspection, Leak Detection",
         status: "success",
       };
 
-    case "create_service_master":
+    case "regenerate-text":
+      // New endpoint for regenerating text based on modified attributes
+      const regeneratedText = generateRegeneratedText(data.attributes);
+      return {
+        create_text: data.attributes,
+        existing: generateMultipleExistingServices(5),
+        new: regeneratedText,
+        status: "success",
+      };
+
+    case "validate-text":
       return generateServiceMasterResponse(data);
 
     default:
@@ -214,15 +378,15 @@ export const mockAPICall = async (endpoint, data, delay = 2000) => {
   }
 };
 
-// Enhanced Generic API call function with proper error handling
+// Generic API call function with proper error handling
 export const apiCall = async (endpoint, data = {}, method = "POST") => {
   try {
     console.log(`Making API call to: ${endpoint}`, { data, method });
 
     // For development/testing, use mock API
-    if (process.env.NODE_ENV === "development" || !CLOUDERA_KHABER_CHAT_URL) {
+    if (!CLOUDERA_KHABER_CHAT_URL) {
       console.log("Using mock API for development");
-      return await mockAPICall(endpoint, data, 1500); // Faster response in dev
+      return await mockAPICall(endpoint, data, 1000);
     }
 
     // Production API call
@@ -230,9 +394,6 @@ export const apiCall = async (endpoint, data = {}, method = "POST") => {
       method,
       headers: {
         "Content-Type": "application/json",
-        // Add auth headers if required, e.g.:
-        // Authorization: `Bearer ${token}`,
-        // "X-API-Key": process.env.REACT_APP_API_KEY,
       },
       body: method !== "GET" ? JSON.stringify(data) : undefined,
     });
@@ -245,7 +406,6 @@ export const apiCall = async (endpoint, data = {}, method = "POST") => {
         const errorData = JSON.parse(errorText);
         errorMessage = errorData.message || errorData.error || errorMessage;
       } catch {
-        // If response is not JSON, use the text as error message
         errorMessage = errorText || errorMessage;
       }
 
@@ -258,7 +418,6 @@ export const apiCall = async (endpoint, data = {}, method = "POST") => {
   } catch (error) {
     console.error(`API call to ${endpoint} failed:`, error);
 
-    // Enhance error with more context
     if (error.name === "TypeError" && error.message.includes("fetch")) {
       throw new Error(
         `Network error: Unable to connect to ${endpoint}. Please check your internet connection.`
@@ -271,17 +430,15 @@ export const apiCall = async (endpoint, data = {}, method = "POST") => {
       );
     }
 
-    // Re-throw the error with original message for other cases
     throw error;
   }
 };
 
-// Utility function to batch process service master creation
+// Batch process service master creation
 export const createServiceMastersBatch = async (items, batchSize = 3) => {
   const results = [];
   const batches = [];
 
-  // Split items into batches to avoid overwhelming the API
   for (let i = 0; i < items.length; i += batchSize) {
     batches.push(items.slice(i, i + batchSize));
   }
@@ -299,7 +456,7 @@ export const createServiceMastersBatch = async (items, batchSize = 3) => {
           new: item.new || item.serviceText,
         };
 
-        const response = await apiCall("create_service_master", payload);
+        const response = await apiCall("validate-text", payload);
 
         return {
           ...item,
@@ -320,11 +477,9 @@ export const createServiceMastersBatch = async (items, batchSize = 3) => {
       }
     });
 
-    // Wait for current batch to complete
     const batchResults = await Promise.all(batchPromises);
     results.push(...batchResults);
 
-    // Add delay between batches to avoid rate limiting
     if (batchIndex < batches.length - 1) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
@@ -333,13 +488,14 @@ export const createServiceMastersBatch = async (items, batchSize = 3) => {
   return results;
 };
 
-// Export constants for use in components
+// API endpoints constants
 export const API_ENDPOINTS = {
   PREDICT_SERVICE_CATEGORIES: "predict-service-categories",
   PREDICT_SERVICE_TYPES: "predict-service-types",
   PREDICT_SERVICE_CLASS: "predict-service-class",
   GENERATE_TEXT: "generate-text",
-  CREATE_SERVICE_MASTER: "create_service_master",
+  REGENERATE_TEXT: "regenerate-text",
+  VALIDATE_TEXT: "validate-text",
 };
 
 export const SERVICE_MASTER_STATUS = {

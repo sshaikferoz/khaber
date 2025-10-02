@@ -218,7 +218,10 @@ export const SelectionHelpCard = ({ hasSelections }) => {
   if (hasSelections) return null;
 
   return (
-    <div className="mb-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
+    <div className="mb-4 rounded-lg p-4" style={{
+      backgroundColor: "#fffbeb",
+      border: "1px solid #fde68a"
+    }} >
       <div className="flex items-start space-x-3">
         <AlertCircle size={16} className="text-amber-600 mt-1 flex-shrink-0" />
         <div>

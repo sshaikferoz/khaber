@@ -44,7 +44,7 @@ export const ResponseDetailsModal = ({ isOpen, onClose, stepId, response }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-2/3 max-w-3xl h-[500px] flex flex-col shadow-xl overflow-y-auto">
+      <div className="bg-white rounded-lg p-6 w-1/3 max-w-3xl flex flex-col shadow-xl overflow-y-auto" style={{maxHeight: "70vh"}}>
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-lg font-semibold text-gray-800">
             {getStepTitle(stepId)}

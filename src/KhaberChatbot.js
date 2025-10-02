@@ -1024,10 +1024,13 @@ export default function KhaberChatbot() {
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
                           <button
+                          style={{
+                            backgroundColor:  knowledgeMode === "aramco" ? '#0070f2':''
+                          }}
                             onClick={() => setKnowledgeMode("aramco")}
                             className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
                               knowledgeMode === "aramco"
-                                ? "bg-[#0070f2] text-white shadow-sm"
+                                ? "bg-blue text-white shadow-sm"
                                 : "text-gray-600 hover:text-gray-800 hover:bg-white"
                             }`}
                           >
@@ -1035,9 +1038,12 @@ export default function KhaberChatbot() {
                           </button>
                           <button
                             onClick={() => setKnowledgeMode("general")}
+                            style={{
+                              backgroundColor:  knowledgeMode === "general" ? '#0070f2':''
+                            }}
                             className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
                               knowledgeMode === "general"
-                                ? "bg-[#0070f2] text-white shadow-sm"
+                                ? "text-white shadow-sm"
                                 : "text-gray-600 hover:text-gray-800 hover:bg-white"
                             }`}
                           >
@@ -1296,6 +1302,9 @@ export default function KhaberChatbot() {
                         <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
                           <button
                             onClick={() => setKnowledgeMode("aramco")}
+                            style={{
+                              backgroundColor:  knowledgeMode === "aramco" ? '#0070f2':''
+                            }}
                             className={`px-3 py-1 rounded-md transition-all text-sm ${
                               knowledgeMode === "aramco"
                                 ? "bg-[#0070f2] text-white"
@@ -1306,6 +1315,9 @@ export default function KhaberChatbot() {
                           </button>
                           <button
                             onClick={() => setKnowledgeMode("general")}
+                            style={{
+                              backgroundColor:  knowledgeMode === "general" ? '#0070f2':''
+                            }}
                             className={`px-3 py-1 rounded-md transition-all text-sm ${
                               knowledgeMode === "general"
                                 ? "bg-[#0070f2] text-white"
