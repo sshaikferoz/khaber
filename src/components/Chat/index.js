@@ -855,7 +855,7 @@ export const ServiceClassTable = ({
       alert("No attributes available to edit");
       return;
     }
-    console.log(textGen.create_text.NavHeader[0].NavItem)
+
     // Convert create_text object to NavItem format for the dialog
 
     const attributes = textGen.create_text?.NavHeader[0]?.NavItem

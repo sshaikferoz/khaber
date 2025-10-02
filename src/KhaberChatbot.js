@@ -28,7 +28,7 @@ import {
   TypesView,
   ClassesView,
   TextGenerationView,
-} from "./components/ResponseViews.js";
+} from "./components/ResponseViews";
 import {
   ResponseDetailsModal,
   ServiceClassInfoDialog,
@@ -51,14 +51,14 @@ import {
   loadVariantsFromStorage,
   clearVariantsStorage,
   addToPipelineHistory,
-} from "./utils/storage.js";
+} from "./utils/storage";
 import {
   apiCall,
   mockAPICall,
   removeDuplicateServiceClasses,
-} from "./utils/mockApi.js";
+} from "./utils/mockApi";
 
-import { USE_MOCK_API } from "./utils/constants.js";
+import { USE_MOCK_API } from "./utils/constants";
 
 export default function KhaberChatbot() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -540,36 +540,31 @@ export default function KhaberChatbot() {
         setServiceClasses((prev) => [...prev, classes[i]]);
         setCarouselSelections((prev) => ({ ...prev, [i]: 0 }));
       }
-      // Step 4: Generate Text for each service class
-      setCurrentStep(3);
-      //   const textGenResponses = [];
-      // Set all items to loading state
-      setIsGeneratingText(new Array(classes.length).fill(true));
+     // Step 4: Generate Text for each service class
+     setCurrentStep(3);
+     const textGenResponses = [];
 
-      // Create all API calls at once
-      const textGenPromises = classes.map((classItem, index) =>
-        fetchFn("generate-text", {
-          text: query,
-          llm_class: classItem,
-        }).then((response) => {
-          // Update individual item as it completes
-          setTextGenerations((prev) => {
-            const newGens = [...prev];
-            newGens[index] = response;
-            return newGens;
-          });
+     for (let i = 0; i < classes.length; i++) {
+       setIsGeneratingText((prev) => {
+         const newState = [...prev];
+         newState[i] = true;
+         return newState;
+       });
 
-          setIsGeneratingText((prev) => {
-            const newState = [...prev];
-            newState[index] = false;
-            return newState;
-          });
+       const textResponse = await fetchFn("generate-text", {
+         text: query,
+         llm_class: classes[i],
+       });
 
-          return response;
-        })
-      );
-      // Wait for all to complete
-      const textGenResponses = await Promise.all(textGenPromises);
+       textGenResponses.push(textResponse);
+       setTextGenerations((prev) => [...prev, textResponse]);
+
+       setIsGeneratingText((prev) => {
+         const newState = [...prev];
+         newState[i] = false;
+         return newState;
+       });
+     }
       // Wait for all to complete
       const finalApiResponses = {
         categories: categoriesResponse,
