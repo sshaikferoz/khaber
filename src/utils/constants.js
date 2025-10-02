@@ -100,9 +100,9 @@ export const BREAKPOINTS = {
   "2XL": "1536px",
 };
 
-// export const CLOUDERA_KHABER_CHAT_URL = "https://search-middleware-hari-agent-aramco-mcc.apps.ibmdev.aramco.com"
-export const CLOUDERA_KHABER_CHAT_URL = ""
-// "https://khaber.cml.apps.cdp-ds-test.aramco.com";
-// https://search-middleware-hari-agent-aramco-mcc.apps.ibmdev.aramco.com/generate-text
+export const CLOUDERA_KHABER_CHAT_URL = "https://search-middleware-hari-agent-aramco-mcc.apps.ibmdev.aramco.com"
+// export const CLOUDERA_KHABER_CHAT_URL = ""
+// // "https://khaber.cml.apps.cdp-ds-test.aramco.com";
+// // https://search-middleware-hari-agent-aramco-mcc.apps.ibmdev.aramco.com/generate-text
 
-export const USE_MOCK_API = true; // Toggle between mock API and real API
+export const USE_MOCK_API = false; // Toggle between mock API and real API
