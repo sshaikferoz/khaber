@@ -18,7 +18,7 @@ import {
   AlertCircle,
   Loader,
 } from "lucide-react";
-import { ExistingServicesCarousel } from "../UI/index";
+import { ExistingServicesCarousel, GeneratedTextCarousel } from "../UI/index";
 import { ItemSkeletonRow } from "../Skeletons.js";
 import { apiCall } from "../../utils/mockApi.js"; // Import the API utility
 
@@ -61,10 +61,11 @@ export const ChatThreadSidebar = ({
         {sortedChats.map((chat) => (
           <div
             key={chat.id}
-            className={`group p-3 rounded-md cursor-pointer transition-colors relative ${currentChatId === chat.id
-              ? "bg-blue-100 border border-blue-200"
-              : "bg-gray-50 hover:bg-gray-100"
-              }`}
+            className={`group p-3 rounded-md cursor-pointer transition-colors relative ${
+              currentChatId === chat.id
+                ? "bg-blue-100 border border-blue-200"
+                : "bg-gray-50 hover:bg-gray-100"
+            }`}
             onClick={() => onSelectChat(chat.id)}
           >
             <div className="flex items-center justify-between">
@@ -202,10 +203,11 @@ const ServiceMasterResultsDialog = ({ isOpen, onClose, results }) => {
               return (
                 <div
                   key={index}
-                  className={`border rounded-lg p-4 ${result.status === "success"
-                    ? "border-green-200 bg-green-50"
-                    : "border-red-200 bg-red-50"
-                    }`}
+                  className={`border rounded-lg p-4 ${
+                    result.status === "success"
+                      ? "border-green-200 bg-green-50"
+                      : "border-red-200 bg-red-50"
+                  }`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-3">
@@ -283,7 +285,7 @@ const ServiceMasterResultsDialog = ({ isOpen, onClose, results }) => {
                       Service Line Item Text:
                     </div>
                     <div className="text-xs text-gray-600 bg-white rounded p-2 max-h-20 overflow-y-auto border border-gray-200">
-                      {result.serviceText}
+                      {result.serviceText[0].text}
                     </div>
                   </div>
 
@@ -468,81 +470,89 @@ const AttributeEditDialog = ({
             {/* Left Column */}
             <div className="space-y-4">
               {attributes &&
-                attributes.slice(0, Math.ceil(attributes.length / 2)).map((attr, index) => (
-                  <div key={index} className="space-y-2">
-                    <label className="block">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-gray-700">
-                          {attr.Atbez}
-                          {attr.Reqrd === "YES" && (
-                            <span className="text-red-500 ml-1">*</span>
-                          )}
-                          {attr.Keychr === "YES" && (
-                            <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
-                              Key
-                            </span>
-                          )}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {attr.Atnam}
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        value={editedAttributes[attr.Atnam] || ""}
-                        onChange={(e) =>
-                          handleAttributeChange(attr.Atnam, e.target.value)
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
-                        placeholder={attr.Chlpt || `Enter ${attr.Atbez}`}
-                        disabled={isLoading}
-                      />
-                      {attr.Chlpt && (
-                        <p className="text-xs text-gray-500 mt-1">{attr.Chlpt}</p>
-                      )}
-                    </label>
-                  </div>
-                ))}
+                attributes
+                  .slice(0, Math.ceil(attributes.length / 2))
+                  .map((attr, index) => (
+                    <div key={index} className="space-y-2">
+                      <label className="block">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-sm font-medium text-gray-700">
+                            {attr.Atbez}
+                            {attr.Reqrd === "YES" && (
+                              <span className="text-red-500 ml-1">*</span>
+                            )}
+                            {attr.Keychr === "YES" && (
+                              <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                                Key
+                              </span>
+                            )}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {attr.Atnam}
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          value={editedAttributes[attr.Atnam] || ""}
+                          onChange={(e) =>
+                            handleAttributeChange(attr.Atnam, e.target.value)
+                          }
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                          placeholder={attr.Chlpt || `Enter ${attr.Atbez}`}
+                          disabled={isLoading}
+                        />
+                        {attr.Chlpt && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            {attr.Chlpt}
+                          </p>
+                        )}
+                      </label>
+                    </div>
+                  ))}
             </div>
 
             {/* Right Column */}
             <div className="space-y-4">
               {attributes &&
-                attributes.slice(Math.ceil(attributes.length / 2)).map((attr, index) => (
-                  <div key={index} className="space-y-2">
-                    <label className="block">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-gray-700">
-                          {attr.Atbez}
-                          {attr.Reqrd === "YES" && (
-                            <span className="text-red-500 ml-1">*</span>
-                          )}
-                          {attr.Keychr === "YES" && (
-                            <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
-                              Key
-                            </span>
-                          )}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {attr.Atnam}
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        value={editedAttributes[attr.Atnam] || ""}
-                        onChange={(e) =>
-                          handleAttributeChange(attr.Atnam, e.target.value)
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
-                        placeholder={attr.Chlpt || `Enter ${attr.Atbez}`}
-                        disabled={isLoading}
-                      />
-                      {attr.Chlpt && (
-                        <p className="text-xs text-gray-500 mt-1">{attr.Chlpt}</p>
-                      )}
-                    </label>
-                  </div>
-                ))}
+                attributes
+                  .slice(Math.ceil(attributes.length / 2))
+                  .map((attr, index) => (
+                    <div key={index} className="space-y-2">
+                      <label className="block">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-sm font-medium text-gray-700">
+                            {attr.Atbez}
+                            {attr.Reqrd === "YES" && (
+                              <span className="text-red-500 ml-1">*</span>
+                            )}
+                            {attr.Keychr === "YES" && (
+                              <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                                Key
+                              </span>
+                            )}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {attr.Atnam}
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          value={editedAttributes[attr.Atnam] || ""}
+                          onChange={(e) =>
+                            handleAttributeChange(attr.Atnam, e.target.value)
+                          }
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                          placeholder={attr.Chlpt || `Enter ${attr.Atbez}`}
+                          disabled={isLoading}
+                        />
+                        {attr.Chlpt && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            {attr.Chlpt}
+                          </p>
+                        )}
+                      </label>
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
@@ -577,7 +587,6 @@ const AttributeEditDialog = ({
     </div>
   );
 };
-
 
 // Detailed Info Dialog Component
 const DetailedInfoDialog = ({
@@ -655,7 +664,7 @@ const DetailedInfoDialog = ({
           </div>
 
           {/* AI Generated Service Text */}
-          {textGen?.new && (
+          {/* {textGen?.new && (
             <div className="mb-6">
               <h4 className="text-md font-semibold text-gray-800 mb-3 border-b pb-2">
                 AI Generated Service Text
@@ -666,7 +675,7 @@ const DetailedInfoDialog = ({
                 </div>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Service Attributes */}
           {textGen?.create_text && (
@@ -756,8 +765,8 @@ const DetailedInfoDialog = ({
                     <div className="text-sm font-medium text-gray-800 mt-1">
                       {selectedExisting.metadata?.created_at
                         ? new Date(
-                          selectedExisting.metadata.created_at
-                        ).toLocaleString()
+                            selectedExisting.metadata.created_at
+                          ).toLocaleString()
                         : "N/A"}
                     </div>
                   </div>
@@ -776,10 +785,11 @@ const DetailedInfoDialog = ({
                 {textGen.existing.map((service, idx) => (
                   <div
                     key={idx}
-                    className={`p-3 rounded-lg border ${idx === carouselIndex
-                      ? "bg-green-50 border-green-300"
-                      : "bg-gray-50 border-gray-200"
-                      }`}
+                    className={`p-3 rounded-lg border ${
+                      idx === carouselIndex
+                        ? "bg-green-50 border-green-300"
+                        : "bg-gray-50 border-gray-200"
+                    }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-medium text-gray-600">
@@ -824,6 +834,7 @@ const DetailedInfoDialog = ({
 
 // Enhanced Service Class Results Table with Editing Capability
 export const ServiceClassTable = ({
+  query,
   serviceClasses,
   textGenerations,
   onShowInfo,
@@ -858,16 +869,16 @@ export const ServiceClassTable = ({
 
     // Convert create_text object to NavItem format for the dialog
 
-    const attributes = textGen.create_text?.NavHeader[0]?.NavItem
-      .map((navItem) => ({
+    const attributes = textGen.create_text?.NavHeader[0]?.NavItem.map(
+      (navItem) => ({
         Atnam: navItem.Atnam,
         Atbez: navItem.Atbez.replace(/_/g, " "),
         Atwrt: navItem.Atwrt,
         Chlpt: `Enter the ${navItem.Atnam.toLowerCase().replace(/_/g, " ")}`,
         Keychr: ["TYPE", "RATE_TYPE"].includes(navItem.Atnam) ? "YES" : "NO",
         Reqrd: ["TYPE", "RATE_TYPE"].includes(navItem.Atnam) ? "YES" : "NO",
-      }))
-      .sort((a, b) => (a.Reqrd === "YES" ? -1 : 1));
+      })
+    ).sort((a, b) => (a.Reqrd === "YES" ? -1 : 1));
 
     setEditingAttributes(attributes);
     setEditingItemIndex(index);
@@ -879,10 +890,18 @@ export const ServiceClassTable = ({
     setIsRegenerating(true);
     try {
       const payload = {
-        attributes: editedAttributes,
-        serviceClass: serviceClasses[editingItemIndex],
+        text: query,
+        attributes_list: Object.entries(editedAttributes).map(
+          ([key, value]) => {
+            return {
+              Name: key,
+              value: value,
+            };
+          }
+        ),
+        llm_class: serviceClasses[editingItemIndex],
       };
-
+      console.log(payload);
       const response = await apiCall("regenerate-text", payload);
 
       // Update the text generation with the new response
@@ -976,8 +995,9 @@ export const ServiceClassTable = ({
                 return (
                   <tr
                     key={index}
-                    className={`border-b border-gray-100 hover:bg-gray-50 animate-fadeIn transition-colors ${isSelected ? "bg-blue-50" : ""
-                      }`}
+                    className={`border-b border-gray-100 hover:bg-gray-50 animate-fadeIn transition-colors ${
+                      isSelected ? "bg-blue-50" : ""
+                    }`}
                     style={{ animationDelay: `${index * 200}ms` }}
                   >
                     <td className="p-4 text-gray-600 text-center">
@@ -991,11 +1011,12 @@ export const ServiceClassTable = ({
                     </td>
                     <td className="p-4">
                       <div
-                        className={`space-y-2 cursor-pointer transition-all duration-200 p-3 rounded-lg border-2 ${isSelected?.choice === "matching"
-                          ? "border-blue-500 bg-blue-50 shadow-md"
-                          : "border-gray-200 hover:border-blue-300 hover:shadow-sm"
-                          }`}
-                        style={{ maxHeight: "180px" }}
+                        className={`space-y-2 cursor-pointer transition-all duration-200 p-3 rounded-lg border-2 ${
+                          isSelected?.choice === "matching"
+                            ? "border-blue-500 bg-blue-50 shadow-md"
+                            : "border-gray-200 hover:border-blue-300 hover:shadow-sm"
+                        }`}
+                        style={{ maxHeight: "250px" }}
                         onClick={() => {
                           if (!isSelected) {
                             onItemSelect(index, true);
@@ -1016,10 +1037,11 @@ export const ServiceClassTable = ({
                             <div className="flex items-center justify-between pt-2 border-t border-gray-200">
                               <div className="flex items-center space-x-2">
                                 <div
-                                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${isSelected?.choice === "matching"
-                                    ? "border-blue-600 bg-blue-600"
-                                    : "border-gray-300 bg-white"
-                                    }`}
+                                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                                    isSelected?.choice === "matching"
+                                      ? "border-blue-600 bg-blue-600"
+                                      : "border-gray-300 bg-white"
+                                  }`}
                                 >
                                   {isSelected?.choice === "matching" && (
                                     <Check size={14} className="text-white" />
@@ -1064,11 +1086,12 @@ export const ServiceClassTable = ({
                     </td>
                     <td className="p-4">
                       <div
-                        className={`space-y-2 cursor-pointer transition-all duration-200 p-3 rounded-lg border-2 ${isSelected?.choice === "new"
-                          ? "border-green-500 bg-green-50 shadow-md"
-                          : "border-gray-200 hover:border-green-300 hover:shadow-sm"
-                          }`}
-                        style={{ maxHeight: "180px" }}
+                        className={`space-y-2 cursor-pointer transition-all duration-200 p-3 rounded-lg border-2 ${
+                          isSelected?.choice === "new"
+                            ? "border-green-500 bg-green-50 shadow-md"
+                            : "border-gray-200 hover:border-green-300 hover:shadow-sm"
+                        }`}
+                        style={{ maxHeight: "250px" }}
                         onClick={() => {
                           if (!isSelected) {
                             onItemSelect(index, true);
@@ -1078,16 +1101,23 @@ export const ServiceClassTable = ({
                       >
                         {textGen ? (
                           <>
-                            <div className="text-xs text-gray-600 bg-white rounded p-2 overflow-auto border border-gray-200" style={{height:"120px"}}>
-                              {textGen.new}
-                            </div>
+                            <GeneratedTextCarousel
+                              generatedTexts={textGen.new}
+                              selectedIndex={
+                                carouselSelections[`new_${index}`] || 0
+                              }
+                              onSelect={(newIndex) =>
+                                onCarouselSelect(`new_${index}`, newIndex)
+                              }
+                            />
                             <div className="flex items-center justify-between pt-2 border-t border-gray-200">
                               <div className="flex items-center space-x-2">
                                 <div
-                                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${isSelected?.choice === "new"
-                                    ? "border-green-600 bg-green-600"
-                                    : "border-gray-300 bg-white"
-                                    }`}
+                                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                                    isSelected?.choice === "new"
+                                      ? "border-green-600 bg-green-600"
+                                      : "border-gray-300 bg-white"
+                                  }`}
                                 >
                                   {isSelected?.choice === "new" && (
                                     <Check size={14} className="text-white" />
@@ -1252,34 +1282,6 @@ export const ReviewScreen = ({ reviewData, onBack, onComplete }) => {
     setShowResults(true);
   };
 
-  // Function to download results as JSON/CSV
-  const handleDownloadReport = () => {
-    const report = {
-      timestamp: new Date().toISOString(),
-      summary: {
-        total_items: reviewData.length,
-        new_items_processed: creationResults.length,
-        successful_creations: creationResults.filter(
-          (r) => r.status === "success"
-        ).length,
-        failed_creations: creationResults.filter((r) => r.status === "error")
-          .length,
-      },
-      results: creationResults,
-    };
-
-    const dataStr = JSON.stringify(report, null, 2);
-    const dataBlob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `service_master_creation_report_${Date.now()}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-
   const handleCloseResults = () => {
     setShowResults(false);
     if (onComplete) {
@@ -1434,7 +1436,7 @@ export const ReviewScreen = ({ reviewData, onBack, onComplete }) => {
                     </td>
                     <td className="p-4">
                       <div className="text-sm text-gray-700 p-3 rounded-lg max-h-32 overflow-y-auto bg-green-50 border border-green-200">
-                        {item.textGen?.new}
+                        {item.textGen?.new[0]?.text}
                       </div>
                     </td>
                   </tr>

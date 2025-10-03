@@ -540,31 +540,31 @@ export default function KhaberChatbot() {
         setServiceClasses((prev) => [...prev, classes[i]]);
         setCarouselSelections((prev) => ({ ...prev, [i]: 0 }));
       }
-     // Step 4: Generate Text for each service class
-     setCurrentStep(3);
-     const textGenResponses = [];
+      // Step 4: Generate Text for each service class
+      setCurrentStep(3);
+      const textGenResponses = [];
 
-     for (let i = 0; i < classes.length; i++) {
-       setIsGeneratingText((prev) => {
-         const newState = [...prev];
-         newState[i] = true;
-         return newState;
-       });
+      for (let i = 0; i < classes.length; i++) {
+        setIsGeneratingText((prev) => {
+          const newState = [...prev];
+          newState[i] = true;
+          return newState;
+        });
 
-       const textResponse = await fetchFn("generate-text", {
-         text: query,
-         llm_class: classes[i],
-       });
+        const textResponse = await fetchFn("generate-text", {
+          text: query,
+          llm_class: classes[i],
+        });
 
-       textGenResponses.push(textResponse);
-       setTextGenerations((prev) => [...prev, textResponse]);
+        textGenResponses.push(textResponse);
+        setTextGenerations((prev) => [...prev, textResponse]);
 
-       setIsGeneratingText((prev) => {
-         const newState = [...prev];
-         newState[i] = false;
-         return newState;
-       });
-     }
+        setIsGeneratingText((prev) => {
+          const newState = [...prev];
+          newState[i] = false;
+          return newState;
+        });
+      }
       // Wait for all to complete
       const finalApiResponses = {
         categories: categoriesResponse,
@@ -819,11 +819,11 @@ export default function KhaberChatbot() {
       ? "w-1/5"
       : "w-16"
     : sidebarExpanded
-      ? "w-1/5"
-      : "w-16";
+    ? "w-1/5"
+    : "w-16";
 
-  const promptAreaWidth = hasSubmittedPrompt ? "w-2/5" : "w-full";
-  const responseAreaWidth = hasSubmittedPrompt ? "w-4/5" : "w-0";
+  const promptAreaWidth = hasSubmittedPrompt ? "w-3/12" : "w-full";
+  const responseAreaWidth = hasSubmittedPrompt ? "w-9/12" : "w-0";
 
   const currentChatHistory = getCurrentChatHistory();
 
@@ -1024,25 +1024,29 @@ export default function KhaberChatbot() {
                         <div className="flex items-center space-x-1 p-1 bg-gray-100 rounded-lg">
                           <button
                             style={{
-                              backgroundColor: knowledgeMode === "aramco" ? '#0070f2' : ''
+                              backgroundColor:
+                                knowledgeMode === "aramco" ? "#0070f2" : "",
                             }}
                             onClick={() => setKnowledgeMode("aramco")}
-                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${knowledgeMode === "aramco"
+                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
+                              knowledgeMode === "aramco"
                                 ? "bg-blue text-white shadow-sm"
                                 : "text-gray-600 hover:text-gray-800 hover:bg-white"
-                              }`}
+                            }`}
                           >
                             Aramco Knowledge
                           </button>
                           <button
                             onClick={() => setKnowledgeMode("general")}
                             style={{
-                              backgroundColor: knowledgeMode === "general" ? '#0070f2' : ''
+                              backgroundColor:
+                                knowledgeMode === "general" ? "#0070f2" : "",
                             }}
-                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${knowledgeMode === "general"
+                            className={`px-3 py-2 rounded-md transition-all text-sm font-medium ${
+                              knowledgeMode === "general"
                                 ? "text-white shadow-sm"
                                 : "text-gray-600 hover:text-gray-800 hover:bg-white"
-                              }`}
+                            }`}
                           >
                             Non Aramco Knowledge
                           </button>
@@ -1108,10 +1112,11 @@ export default function KhaberChatbot() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${knowledgeMode === "aramco"
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        knowledgeMode === "aramco"
                           ? "bg-green-100 text-green-800"
                           : "bg-blue-100 text-blue-800"
-                        }`}
+                      }`}
                     >
                       {knowledgeMode === "aramco"
                         ? "Aramco Mode"
@@ -1299,24 +1304,28 @@ export default function KhaberChatbot() {
                           <button
                             onClick={() => setKnowledgeMode("aramco")}
                             style={{
-                              backgroundColor: knowledgeMode === "aramco" ? '#0070f2' : ''
+                              backgroundColor:
+                                knowledgeMode === "aramco" ? "#0070f2" : "",
                             }}
-                            className={`px-3 py-1 rounded-md transition-all text-sm ${knowledgeMode === "aramco"
+                            className={`px-3 py-1 rounded-md transition-all text-sm ${
+                              knowledgeMode === "aramco"
                                 ? "bg-[#0070f2] text-white"
                                 : "text-gray-600 hover:text-gray-800"
-                              }`}
+                            }`}
                           >
                             Aramco
                           </button>
                           <button
                             onClick={() => setKnowledgeMode("general")}
                             style={{
-                              backgroundColor: knowledgeMode === "general" ? '#0070f2' : ''
+                              backgroundColor:
+                                knowledgeMode === "general" ? "#0070f2" : "",
                             }}
-                            className={`px-3 py-1 rounded-md transition-all text-sm ${knowledgeMode === "general"
+                            className={`px-3 py-1 rounded-md transition-all text-sm ${
+                              knowledgeMode === "general"
                                 ? "bg-[#0070f2] text-white"
                                 : "text-gray-600 hover:text-gray-800"
-                              }`}
+                            }`}
                           >
                             Non-Aramco
                           </button>
@@ -1377,19 +1386,21 @@ export default function KhaberChatbot() {
               <div className="flex space-x-1 border-b border-gray-200">
                 <button
                   onClick={() => setActiveTab("predictions")}
-                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === "predictions"
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+                    activeTab === "predictions"
                       ? "border-blue-500 text-blue-600"
                       : "border-transparent text-gray-500 hover:text-gray-700"
-                    }`}
+                  }`}
                 >
                   Selection Screen
                 </button>
                 <button
                   onClick={() => setActiveTab("review")}
-                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === "review"
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+                    activeTab === "review"
                       ? "border-blue-500 text-blue-600"
                       : "border-transparent text-gray-500 hover:text-gray-700"
-                    }`}
+                  }`}
                 >
                   Review/Confirm Service Line Items
                   {reviewData.length > 0 && (
@@ -1419,6 +1430,7 @@ export default function KhaberChatbot() {
 
                   {serviceClasses.length > 0 ? (
                     <ServiceClassTable
+                      query={submittedQuery}
                       serviceClasses={serviceClasses}
                       textGenerations={textGenerations}
                       onShowInfo={handleShowInfo}

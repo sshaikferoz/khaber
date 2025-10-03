@@ -218,10 +218,13 @@ export const SelectionHelpCard = ({ hasSelections }) => {
   if (hasSelections) return null;
 
   return (
-    <div className="mb-4 rounded-lg p-4" style={{
-      backgroundColor: "#fffbeb",
-      border: "1px solid #fde68a"
-    }} >
+    <div
+      className="mb-4 rounded-lg p-4"
+      style={{
+        backgroundColor: "#fffbeb",
+        border: "1px solid #fde68a",
+      }}
+    >
       <div className="flex items-start space-x-3">
         <AlertCircle size={16} className="text-amber-600 mt-1 flex-shrink-0" />
         <div>
@@ -298,6 +301,69 @@ export const ChainOfThoughtStep = ({
             )}
           </>
         )}
+      </div>
+    </div>
+  );
+};
+
+// Carousel Component for Generated Texts
+export const GeneratedTextCarousel = ({
+  generatedTexts,
+  selectedIndex,
+  onSelect,
+}) => {
+  if (
+    !generatedTexts ||
+    !Array.isArray(generatedTexts) ||
+    generatedTexts.length === 0
+  ) {
+    return (
+      <div className="flex items-center justify-center h-20 bg-gray-50 rounded border border-gray-200">
+        <span className="text-xs text-gray-400">
+          No generated text available
+        </span>
+      </div>
+    );
+  }
+
+  const currentText = generatedTexts[selectedIndex];
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <span className="text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded">
+            {currentText?.type || "Standard"}
+          </span>
+        </div>
+        <div className="flex items-center space-x-1">
+          <button
+            onClick={() => onSelect(Math.max(0, selectedIndex - 1))}
+            disabled={selectedIndex === 0}
+            className="p-1 text-gray-400 hover:text-gray-600 disabled:opacity-50"
+          >
+            <ChevronLeft size={14} />
+          </button>
+          <span className="text-xs text-gray-500">
+            {selectedIndex + 1} of {generatedTexts.length}
+          </span>
+          <button
+            onClick={() =>
+              onSelect(Math.min(generatedTexts.length - 1, selectedIndex + 1))
+            }
+            disabled={selectedIndex === generatedTexts.length - 1}
+            className="p-1 text-gray-400 hover:text-gray-600 disabled:opacity-50"
+          >
+            <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+
+      <div
+        className="text-xs text-gray-600 bg-white rounded p-2 overflow-auto border border-gray-200"
+        style={{ height: "80px" }}
+      >
+        {currentText?.text || currentText}
       </div>
     </div>
   );

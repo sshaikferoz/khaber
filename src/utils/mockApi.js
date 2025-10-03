@@ -68,9 +68,8 @@ const generateMultipleExistingServices = (count = 5) => {
       service_class: serviceClasses[index % serviceClasses.length],
       service_group: serviceGroups[index % serviceGroups.length],
       service_type: serviceTypes[index % serviceTypes.length],
-      source: `00000000000${
-        4000000 + Math.floor(Math.random() * 100000) + index * 1000
-      }`,
+      source: `00000000000${4000000 + Math.floor(Math.random() * 100000) + index * 1000
+        }`,
     },
     rank: index + 1,
     relevance: `${Math.floor(Math.random() * 20) + 80}.${Math.floor(
@@ -345,29 +344,1652 @@ export const mockAPICall = async (endpoint, data, delay = 2000) => {
 
     case "generate-text":
       return {
-        create_text: {
-          TYPE: "Storage Tank",
-          APPLICATION: "Cleaning & Maintenance",
-          METHOD: "Manual",
-          RATE_TYPE: "Fixed",
-          MATERIAL: "Steel",
-          SHAPE: "Cylindrical",
-          ROOF_TYPE: "Flat",
-          WALL_TYPE: "Load-Bearing",
+        "attr": [
+          {
+            "Name": "TYPE",
+            "value": "Operational Risk"
+          },
+          {
+            "Name": "APPLICATION",
+            "value": "Risk analysis for oilfield operations to improve safety and asset reliability"
+          },
+          {
+            "Name": "METHOD",
+            "value": "Hazard identification, HAZOP, FMEA, quantitative risk assessment, and root\u2011cause analysis"
+          },
+          {
+            "Name": "ACTIVITY TYPE CODE",
+            "value": ""
+          },
+          {
+            "Name": "REFERENCE DATA",
+            "value": "Well IDs, equipment tag numbers, and process flow diagrams"
+          },
+          {
+            "Name": "DIMENSIONS",
+            "value": ""
+          },
+          {
+            "Name": "SAMPLING METHOD",
+            "value": "Stratified sampling of field data and operational logs"
+          },
+          {
+            "Name": "PRESSURE RATING",
+            "value": ""
+          },
+          {
+            "Name": "HAZARD CLASS TYPE",
+            "value": ""
+          },
+          {
+            "Name": "BRAND NAME",
+            "value": ""
+          },
+          {
+            "Name": "MODEL",
+            "value": ""
+          },
+          {
+            "Name": "REPORTING RANGE",
+            "value": ""
+          },
+          {
+            "Name": "REPORTING LIMIT",
+            "value": ""
+          },
+          {
+            "Name": "RATE TYPE",
+            "value": "Time and Materials"
+          },
+          {
+            "Name": "MATERIAL PROVIDED BY",
+            "value": "Client"
+          },
+          {
+            "Name": "TOOLS PROVIDED BY",
+            "value": "Consultant"
+          },
+          {
+            "Name": "TRANSPORTATION ARRANGEMENT",
+            "value": "Client"
+          },
+          {
+            "Name": "OPERATING AREA",
+            "value": "Saudi Arabia \u2013 Jeddah and SPARK facilities"
+          },
+          {
+            "Name": "MATERIAL INCLUDES",
+            "value": "Data sets, analysis reports, risk matrices"
+          },
+          {
+            "Name": "MATERIAL EXCLUDES",
+            "value": "Physical hardware, equipment"
+          },
+          {
+            "Name": "MANPOWER PROVIDED BY",
+            "value": "Consultant"
+          },
+          {
+            "Name": "APPLICABLE STANDARD",
+            "value": "API 53, ISO 9001, ISO 14001"
+          },
+          {
+            "Name": "ADDITIONAL INFORMATION",
+            "value": "Supports digital transformation and compliance with Saudi Aramco safety policies"
+          },
+          {
+            "Name": "SCOPE",
+            "value": "Risk analysis services for oilfield operations"
+          },
+          {
+            "Name": "ADDITIONAL ACTIVITY INCLUDES",
+            "value": "Data collection, hazard identification, risk quantification, mitigation recommendations"
+          },
+          {
+            "Name": "LEGACY SERVICE MASTER",
+            "value": ""
+          },
+          {
+            "Name": "PURCHASE ORDER",
+            "value": ""
+          },
+          {
+            "Name": "CONTRACT",
+            "value": ""
+          },
+          {
+            "Name": "RFQ",
+            "value": ""
+          },
+          {
+            "Name": "REF_MSS",
+            "value": ""
+          },
+          {
+            "Name": "PURCHASE REQ",
+            "value": ""
+          }
+        ],
+        "create_text": {
+          "Action": "SUBMIT",
+          "NavHeader": [
+            {
+              "Action": "SUBMIT",
+              "Asnum": "1",
+              "Astyp": "",
+              "Class": "ANLZ:RISK:OLFLD",
+              "Isic": "K6621",
+              "Lbnum": "",
+              "Longtxt": "",
+              "Matkl": "",
+              "Meins": "EA",
+              "Mstde": "",
+              "NavDup": [],
+              "NavItem": [
+                {
+                  "Asnum": "",
+                  "Atbez": "TYPE",
+                  "Atnam": "TYPE",
+                  "Atwrt": "Operational Risk",
+                  "Chlpt": "Enter the specific type of Oilfield Risk like Operational Risk, Environmental Risk, Financial Risk, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "YES",
+                  "Meins": "",
+                  "Posnr": 1,
+                  "Refclass": "",
+                  "Reqrd": "YES",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "APPLICATION",
+                  "Atnam": "APPLN",
+                  "Atwrt": "Risk analysis for oilfield operations to improve safety and asset reliability",
+                  "Chlpt": "An indication of the intended use or purpose of performing the specified activity.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 2,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "METHOD",
+                  "Atnam": "MTHD",
+                  "Atwrt": "Hazard identification, HAZOP, FMEA, quantitative risk assessment, and root\u2011cause analysis",
+                  "Chlpt": "Explains the means or process or manner or procedure or systematic way of accomplishing a task.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 3,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ACTIVITY TYPE CODE",
+                  "Atnam": "ACTVTY_TYPE_CODE",
+                  "Atwrt": "",
+                  "Chlpt": "Indicates an Aramco specific activity code to identify the activity covered under the service.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 4,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REFERENCE DATA",
+                  "Atnam": "REF_DATA",
+                  "Atwrt": "Well IDs, equipment tag numbers, and process flow diagrams",
+                  "Chlpt": "Indicates Aramco specific information or data to identify a reference to internal or external data or code like tag numbers or equipment code.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 5,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "DIMENSIONS",
+                  "Atnam": "DMNSN",
+                  "Atwrt": "",
+                  "Chlpt": "The physical dimensions such as length, width, height, diameter of the item like 100mm x 200mm x 300mm, 50mm x 100mm x 150mm, 80mm x 160mm x 240mm, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 6,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "SAMPLING METHOD",
+                  "Atnam": "SAMPLING_MTHD",
+                  "Atwrt": "Stratified sampling of field data and operational logs",
+                  "Chlpt": "Specifies the method used to draw samples for analysis like Random Sampling, Stratified Sampling, Systematic Sampling, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 7,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PRESSURE RATING",
+                  "Atnam": "PRES_RTNG",
+                  "Atwrt": "",
+                  "Chlpt": "The pressure at which an item is rated to operate like 150 psi, 300 psi, 600 psi, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 8,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "HAZARD CLASS TYPE",
+                  "Atnam": "HZRD_CLS_TYPE",
+                  "Atwrt": "",
+                  "Chlpt": "The hazardous classification of where the item is rated to be used and purpose. the term \u2018hazard class\u2019 refers to the un recommended system of nine classes (1 to 9) for identifying dangerous goods and subdivisions like Flammable, Toxic, Corrosive, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 9,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "BRAND NAME",
+                  "Atnam": "BRND_NAME",
+                  "Atwrt": "",
+                  "Chlpt": "A word, name, symbol, etc., especially one legally registered as a trademark, used by a manufacturer or merchant to identify its products distinctively from others of the same type and usually prominently displayed on its goods, in advertising, etc like A",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 10,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MODEL",
+                  "Atnam": "MODEL",
+                  "Atwrt": "",
+                  "Chlpt": "A unique\u00a0number\u00a0given to each product like Model A, Model B, Model C, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 11,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REPORTING RANGE",
+                  "Atnam": "REPORTING_RNGE",
+                  "Atwrt": "",
+                  "Chlpt": "Specifies the minimum and maximum or smallest and largest concentration (or amount) of analyte, that can be reported by a laboratory like 0-1000 ppm, 0-500 mg/m\u00b3, 0-10 mA, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 12,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REPORTING LIMIT",
+                  "Atnam": "REPORTING_LMT",
+                  "Atwrt": "",
+                  "Chlpt": "Specifies the smallest concentration (or amount) of analyte, that can be reported by a laboratory like 1 ppm, 0.5 mg/m\u00b3, 10 \u00b5g/L, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 13,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "RATE TYPE",
+                  "Atnam": "RATE_TYPE",
+                  "Atwrt": "Time and Materials",
+                  "Chlpt": "An indication of the method used for calculating the compensation or price payable for the service activity.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "YES",
+                  "Meins": "",
+                  "Posnr": 14,
+                  "Refclass": "",
+                  "Reqrd": "YES",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL PROVIDED BY",
+                  "Atnam": "MTRL_PRVD",
+                  "Atwrt": "Client",
+                  "Chlpt": "The entity responsible to supply the required materials for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 15,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "TOOLS PROVIDED BY",
+                  "Atnam": "TOOL_PRVIDE",
+                  "Atwrt": "Consultant",
+                  "Chlpt": "The entity responsible to provide the tools for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 16,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "TRANSPORTATION ARRANGEMENT",
+                  "Atnam": "TRANS_ARR",
+                  "Atwrt": "Client",
+                  "Chlpt": "The entity responsible to supply the transportation for labors and goods. e.g. client, contractor, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 17,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "OPERATING AREA",
+                  "Atnam": "OPRTNG_AREA",
+                  "Atwrt": "Saudi Arabia \u2013 Jeddah and SPARK facilities",
+                  "Chlpt": "The geographical or spatial and physically identifiable area or zone or country or location where the activity will be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 18,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL INCLUDES",
+                  "Atnam": "MTRL_INCL",
+                  "Atwrt": "Data sets, analysis reports, risk matrices",
+                  "Chlpt": "Indicates the list of materials which are included.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 19,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL EXCLUDES",
+                  "Atnam": "MTRL_EXCL",
+                  "Atwrt": "Physical hardware, equipment",
+                  "Chlpt": "Indicates the list of materials which are excluded.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 20,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MANPOWER PROVIDED BY",
+                  "Atnam": "MANPWR_PRVIDE",
+                  "Atwrt": "Consultant",
+                  "Chlpt": "The entity responsible to provide the personnel for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 21,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "APPLICABLE STANDARD",
+                  "Atnam": "APPL_STD",
+                  "Atwrt": "API 53, ISO 9001, ISO 14001",
+                  "Chlpt": "A technical standard is an established norm or requirement which is widely agreed upon or imposed by a governing body. it is usually a formal document that establishes uniform engineering or technical criteria, methods, processes and best practices like I",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 22,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ADDITIONAL INFORMATION",
+                  "Atnam": "ADD_INFO",
+                  "Atwrt": "Supports digital transformation and compliance with Saudi Aramco safety policies",
+                  "Chlpt": "Any information which is relevant for conducting an activity which also have an impact on the result expected.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 23,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "SCOPE",
+                  "Atnam": "SCOPE",
+                  "Atwrt": "Risk analysis services for oilfield operations",
+                  "Chlpt": "Indicates the activities covered under service line item represented by SAP service activity number.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 24,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ADDITIONAL ACTIVITY INCLUDES",
+                  "Atnam": "ADD_ACTVTY",
+                  "Atwrt": "Data collection, hazard identification, risk quantification, mitigation recommendations",
+                  "Chlpt": "Specifies list of activites or taks which are to be carried out to complete the intended service or work.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 25,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "LEGACY SERVICE MASTER",
+                  "Atnam": "LGCY_SERVICE_MASTER",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PURCHASE ORDER",
+                  "Atnam": "PURCHASE_ORDER",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "CONTRACT",
+                  "Atnam": "CONTRACT",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "RFQ",
+                  "Atnam": "RFQ",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REF_MSS",
+                  "Atnam": "REF_MSS",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PURCHASE REQ",
+                  "Atnam": "PURCHASE_REQ",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                }
+              ],
+              "NavReturn": [],
+              "Pilogid": "",
+              "Reccount": 1,
+              "Refasnum": "",
+              "Shortxt": "",
+              "Sshcode": "B.15.12.02",
+              "Unspsc": "71151202"
+            }
+          ],
+          "Refasnum": ""
         },
-        existing: generateMultipleExistingServices(5),
-        new: "MAINTAIN TANK, Type Industrial Storage Tank, Intended Application Is Maintenance And Inspection Of Large Industrial Storage Tanks, Method Or Procedure Scheduled Maintenance, Preventive Care, Structural Inspection, Rate Type For Remuneration Will Be Per Square Meter, Material Will Be Provided By Saudi Aramco, Tools Will Be Provided By Contractor, Transportation Will Be Arranged By Contractor, Operating Location Or Area Or Region Saudi Arabia (Dhahran, Ras Tanura, Jubail, Yanbu), Materials Which Are Included Are Maintenance Supplies, Inspection Equipment, Safety Gear, Manpower Will Be Provided By Contractor, Applicable Standard API 650, API 653, ASME Standards, Additional Information Tank Types Include: Crude Oil, Refined Products, Chemical Storage, Scope Will Be Complete Tank Maintenance Program, Additional Activity Includes Condition Assessment, Cleaning, Coating Inspection, Leak Detection",
-        status: "success",
+        "existing": [
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:58.036844",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111243"
+            },
+            "rank": 1,
+            "relevance": "59.10%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: SAND, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY  FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:57.642595",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111241"
+            },
+            "rank": 2,
+            "relevance": "56.83%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: SALT, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY  FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:57.834842",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111242"
+            },
+            "rank": 3,
+            "relevance": "55.60%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: VAPOR PRESSURE, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:12.241308",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:CNSLTG",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004063990"
+            },
+            "rank": 4,
+            "relevance": "55.03%",
+            "service_text": " PROVIDE:SERVICES:CONSULTING; TYPE: DELIVER ASSESSMENT INSTRUMENTS, RATE TYPE: EACH"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:13.443162",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:CNSLTG",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004063996"
+            },
+            "rank": 5,
+            "relevance": "54.57%",
+            "service_text": " PROVIDE:SERVICES:CONSULTING; TYPE: DEVELOPMENT ACCOUNTABILITY TOOL DELIVERY, RATE TYPE: EACH"
+          }
+        ],
+        "new": [
+          {
+            "text": "ANALYZE RISK OILFIELD, Type Operational Risk, Intended Application Is Risk Analysis For Oilfield Operations To Improve Safety And Asset Reli, Method Or Procedure Hazard Identification, Hazop, Fmea, Quantitative Risk Assessment, And, Reference Data Well Ids, Equipment Tag Numbers, And Process Flow Diagrams, Sampling Method Stratified Sampling Of Field Data And Operational Logs, Rate Type For Remuneration Will Be Time And Materials, Material Will Be Provided By Client, Tools Will Be Provided By Consultant, Transportation Will Be Arranged By Client, Operating Location Or Area Or Region Saudi Arabia \u2013 Jeddah And Spark Facilities, Materials Which Are Included Are Data Sets, Analysis Reports, Risk Matrices, Materials Which Are Excluded Are Physical Hardware, Equipment, Manpower Will Be Provided By Consultant, Applicable Standard Api 53, Iso 9001, Iso 14001, Additional Information Supports Digital Transformation And Compliance With Saudi Aramco Safet, Scope Will Be Risk Analysis Services For Oilfield Operations, Additional Activity Includes Data Collection, Hazard Identification, Risk Quantification, Mitigatio",
+            "type": "Aramco Standard"
+          },
+          {
+            "text": "ANALYZE RISK OILFIELD, Type Operational Risk, Intended Application Is Risk Analysis For Oilfield Operations To Improve Safety And Asset Reli, Method Or Procedure Hazard Identification, Hazop, Fmea, Quantitative Risk Assessment, And, Reference Data Well Ids, Equipment Tag Numbers, And Process Flow Diagrams, Sampling Method Stratified Sampling Of Field Data And Operational Logs, Rate Type For Remuneration Will Be Time And Materials, Material Will Be Provided By Client, Tools Will Be Provided By Consultant, Transportation Will Be Arranged By Client, Operating Location Or Area Or Region Saudi Arabia \u2013 Jeddah And Spark Facilities, Materials Which Are Included Are Data Sets, Analysis Reports, Risk Matrices, Materials Which Are Excluded Are Physical Hardware, Equipment, Manpower Will Be Provided By Consultant, Applicable Standard Api 53, Iso 9001, Iso 14001, Additional Information Supports Digital Transformation And Compliance With Saudi Aramco Safet, Scope Will Be Risk Analysis Services For Oilfield Operations, Additional Activity Includes Data Collection, Hazard Identification, Risk Quantification, Mitigatio",
+            "type": "Global Standard"
+          }
+        ]
       };
 
     case "regenerate-text":
       // New endpoint for regenerating text based on modified attributes
       const regeneratedText = generateRegeneratedText(data.attributes);
       return {
-        create_text: data.attributes,
-        existing: generateMultipleExistingServices(5),
-        new: regeneratedText,
-        status: "success",
+        "attr": [
+          {
+            "Name": "TYPE",
+            "value": "Operational Risk"
+          },
+          {
+            "Name": "APPLICATION",
+            "value": "Risk analysis for oilfield operations to improve safety and asset reliability"
+          },
+          {
+            "Name": "METHOD",
+            "value": "Hazard identification, HAZOP, FMEA, quantitative risk assessment, and root\u2011cause analysis"
+          },
+          {
+            "Name": "ACTIVITY TYPE CODE",
+            "value": ""
+          },
+          {
+            "Name": "REFERENCE DATA",
+            "value": "Well IDs, equipment tag numbers, and process flow diagrams"
+          },
+          {
+            "Name": "DIMENSIONS",
+            "value": ""
+          },
+          {
+            "Name": "SAMPLING METHOD",
+            "value": "Stratified sampling of field data and operational logs"
+          },
+          {
+            "Name": "PRESSURE RATING",
+            "value": ""
+          },
+          {
+            "Name": "HAZARD CLASS TYPE",
+            "value": ""
+          },
+          {
+            "Name": "BRAND NAME",
+            "value": ""
+          },
+          {
+            "Name": "MODEL",
+            "value": ""
+          },
+          {
+            "Name": "REPORTING RANGE",
+            "value": ""
+          },
+          {
+            "Name": "REPORTING LIMIT",
+            "value": ""
+          },
+          {
+            "Name": "RATE TYPE",
+            "value": "Time and Materials"
+          },
+          {
+            "Name": "MATERIAL PROVIDED BY",
+            "value": "Client"
+          },
+          {
+            "Name": "TOOLS PROVIDED BY",
+            "value": "Consultant"
+          },
+          {
+            "Name": "TRANSPORTATION ARRANGEMENT",
+            "value": "Client"
+          },
+          {
+            "Name": "OPERATING AREA",
+            "value": "Saudi Arabia \u2013 Jeddah and SPARK facilities"
+          },
+          {
+            "Name": "MATERIAL INCLUDES",
+            "value": "Data sets, analysis reports, risk matrices"
+          },
+          {
+            "Name": "MATERIAL EXCLUDES",
+            "value": "Physical hardware, equipment"
+          },
+          {
+            "Name": "MANPOWER PROVIDED BY",
+            "value": "Consultant"
+          },
+          {
+            "Name": "APPLICABLE STANDARD",
+            "value": "API 53, ISO 9001, ISO 14001"
+          },
+          {
+            "Name": "ADDITIONAL INFORMATION",
+            "value": "Supports digital transformation and compliance with Saudi Aramco safety policies"
+          },
+          {
+            "Name": "SCOPE",
+            "value": "Risk analysis services for oilfield operations"
+          },
+          {
+            "Name": "ADDITIONAL ACTIVITY INCLUDES",
+            "value": "Data collection, hazard identification, risk quantification, mitigation recommendations"
+          },
+          {
+            "Name": "LEGACY SERVICE MASTER",
+            "value": ""
+          },
+          {
+            "Name": "PURCHASE ORDER",
+            "value": ""
+          },
+          {
+            "Name": "CONTRACT",
+            "value": ""
+          },
+          {
+            "Name": "RFQ",
+            "value": ""
+          },
+          {
+            "Name": "REF_MSS",
+            "value": ""
+          },
+          {
+            "Name": "PURCHASE REQ",
+            "value": ""
+          }
+        ],
+        "create_text": {
+          "Action": "SUBMIT",
+          "NavHeader": [
+            {
+              "Action": "SUBMIT",
+              "Asnum": "1",
+              "Astyp": "",
+              "Class": "ANLZ:RISK:OLFLD",
+              "Isic": "K6621",
+              "Lbnum": "",
+              "Longtxt": "",
+              "Matkl": "",
+              "Meins": "EA",
+              "Mstde": "",
+              "NavDup": [],
+              "NavItem": [
+                {
+                  "Asnum": "",
+                  "Atbez": "TYPE",
+                  "Atnam": "TYPE",
+                  "Atwrt": "Operational Risk",
+                  "Chlpt": "Enter the specific type of Oilfield Risk like Operational Risk, Environmental Risk, Financial Risk, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "YES",
+                  "Meins": "",
+                  "Posnr": 1,
+                  "Refclass": "",
+                  "Reqrd": "YES",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "APPLICATION",
+                  "Atnam": "APPLN",
+                  "Atwrt": "Risk analysis for oilfield operations to improve safety and asset reliability",
+                  "Chlpt": "An indication of the intended use or purpose of performing the specified activity.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 2,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "METHOD",
+                  "Atnam": "MTHD",
+                  "Atwrt": "Hazard identification, HAZOP, FMEA, quantitative risk assessment, and root\u2011cause analysis",
+                  "Chlpt": "Explains the means or process or manner or procedure or systematic way of accomplishing a task.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 3,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ACTIVITY TYPE CODE",
+                  "Atnam": "ACTVTY_TYPE_CODE",
+                  "Atwrt": "",
+                  "Chlpt": "Indicates an Aramco specific activity code to identify the activity covered under the service.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 4,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REFERENCE DATA",
+                  "Atnam": "REF_DATA",
+                  "Atwrt": "Well IDs, equipment tag numbers, and process flow diagrams",
+                  "Chlpt": "Indicates Aramco specific information or data to identify a reference to internal or external data or code like tag numbers or equipment code.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 5,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "DIMENSIONS",
+                  "Atnam": "DMNSN",
+                  "Atwrt": "",
+                  "Chlpt": "The physical dimensions such as length, width, height, diameter of the item like 100mm x 200mm x 300mm, 50mm x 100mm x 150mm, 80mm x 160mm x 240mm, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 6,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "SAMPLING METHOD",
+                  "Atnam": "SAMPLING_MTHD",
+                  "Atwrt": "Stratified sampling of field data and operational logs",
+                  "Chlpt": "Specifies the method used to draw samples for analysis like Random Sampling, Stratified Sampling, Systematic Sampling, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 7,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PRESSURE RATING",
+                  "Atnam": "PRES_RTNG",
+                  "Atwrt": "",
+                  "Chlpt": "The pressure at which an item is rated to operate like 150 psi, 300 psi, 600 psi, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 8,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "HAZARD CLASS TYPE",
+                  "Atnam": "HZRD_CLS_TYPE",
+                  "Atwrt": "",
+                  "Chlpt": "The hazardous classification of where the item is rated to be used and purpose. the term \u2018hazard class\u2019 refers to the un recommended system of nine classes (1 to 9) for identifying dangerous goods and subdivisions like Flammable, Toxic, Corrosive, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 9,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "BRAND NAME",
+                  "Atnam": "BRND_NAME",
+                  "Atwrt": "",
+                  "Chlpt": "A word, name, symbol, etc., especially one legally registered as a trademark, used by a manufacturer or merchant to identify its products distinctively from others of the same type and usually prominently displayed on its goods, in advertising, etc like A",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 10,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MODEL",
+                  "Atnam": "MODEL",
+                  "Atwrt": "",
+                  "Chlpt": "A unique\u00a0number\u00a0given to each product like Model A, Model B, Model C, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 11,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REPORTING RANGE",
+                  "Atnam": "REPORTING_RNGE",
+                  "Atwrt": "",
+                  "Chlpt": "Specifies the minimum and maximum or smallest and largest concentration (or amount) of analyte, that can be reported by a laboratory like 0-1000 ppm, 0-500 mg/m\u00b3, 0-10 mA, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 12,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REPORTING LIMIT",
+                  "Atnam": "REPORTING_LMT",
+                  "Atwrt": "",
+                  "Chlpt": "Specifies the smallest concentration (or amount) of analyte, that can be reported by a laboratory like 1 ppm, 0.5 mg/m\u00b3, 10 \u00b5g/L, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 13,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "RATE TYPE",
+                  "Atnam": "RATE_TYPE",
+                  "Atwrt": "Time and Materials",
+                  "Chlpt": "An indication of the method used for calculating the compensation or price payable for the service activity.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "YES",
+                  "Meins": "",
+                  "Posnr": 14,
+                  "Refclass": "",
+                  "Reqrd": "YES",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL PROVIDED BY",
+                  "Atnam": "MTRL_PRVD",
+                  "Atwrt": "Client",
+                  "Chlpt": "The entity responsible to supply the required materials for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 15,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "TOOLS PROVIDED BY",
+                  "Atnam": "TOOL_PRVIDE",
+                  "Atwrt": "Consultant",
+                  "Chlpt": "The entity responsible to provide the tools for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 16,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "TRANSPORTATION ARRANGEMENT",
+                  "Atnam": "TRANS_ARR",
+                  "Atwrt": "Client",
+                  "Chlpt": "The entity responsible to supply the transportation for labors and goods. e.g. client, contractor, etc.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 17,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "OPERATING AREA",
+                  "Atnam": "OPRTNG_AREA",
+                  "Atwrt": "Saudi Arabia \u2013 Jeddah and SPARK facilities",
+                  "Chlpt": "The geographical or spatial and physically identifiable area or zone or country or location where the activity will be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 18,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL INCLUDES",
+                  "Atnam": "MTRL_INCL",
+                  "Atwrt": "Data sets, analysis reports, risk matrices",
+                  "Chlpt": "Indicates the list of materials which are included.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 19,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MATERIAL EXCLUDES",
+                  "Atnam": "MTRL_EXCL",
+                  "Atwrt": "Physical hardware, equipment",
+                  "Chlpt": "Indicates the list of materials which are excluded.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 20,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "MANPOWER PROVIDED BY",
+                  "Atnam": "MANPWR_PRVIDE",
+                  "Atwrt": "Consultant",
+                  "Chlpt": "The entity responsible to provide the personnel for the task to be carried out.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 21,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "APPLICABLE STANDARD",
+                  "Atnam": "APPL_STD",
+                  "Atwrt": "API 53, ISO 9001, ISO 14001",
+                  "Chlpt": "A technical standard is an established norm or requirement which is widely agreed upon or imposed by a governing body. it is usually a formal document that establishes uniform engineering or technical criteria, methods, processes and best practices like I",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 22,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ADDITIONAL INFORMATION",
+                  "Atnam": "ADD_INFO",
+                  "Atwrt": "Supports digital transformation and compliance with Saudi Aramco safety policies",
+                  "Chlpt": "Any information which is relevant for conducting an activity which also have an impact on the result expected.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 23,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "SCOPE",
+                  "Atnam": "SCOPE",
+                  "Atwrt": "Risk analysis services for oilfield operations",
+                  "Chlpt": "Indicates the activities covered under service line item represented by SAP service activity number.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 24,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "ADDITIONAL ACTIVITY INCLUDES",
+                  "Atnam": "ADD_ACTVTY",
+                  "Atwrt": "Data collection, hazard identification, risk quantification, mitigation recommendations",
+                  "Chlpt": "Specifies list of activites or taks which are to be carried out to complete the intended service or work.",
+                  "Class": "ANLZ:RISK:OLFLD",
+                  "Keychr": "NO",
+                  "Meins": "",
+                  "Posnr": 25,
+                  "Refclass": "",
+                  "Reqrd": "NO",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "LEGACY SERVICE MASTER",
+                  "Atnam": "LGCY_SERVICE_MASTER",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PURCHASE ORDER",
+                  "Atnam": "PURCHASE_ORDER",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "CONTRACT",
+                  "Atnam": "CONTRACT",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "RFQ",
+                  "Atnam": "RFQ",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "REF_MSS",
+                  "Atnam": "REF_MSS",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                },
+                {
+                  "Asnum": "",
+                  "Atbez": "PURCHASE REQ",
+                  "Atnam": "PURCHASE_REQ",
+                  "Atwrt": "",
+                  "Chlpt": "",
+                  "Class": "SM_DOCS_REFS",
+                  "Keychr": "",
+                  "Meins": "",
+                  "Posnr": 0,
+                  "Refclass": "X",
+                  "Reqrd": "",
+                  "Selected": false,
+                  "__metadata": {
+                    "id": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')",
+                    "type": "ZSCM_MDG_SER_MSTR_SRV.SMItem",
+                    "uri": "https://DVC.ARAMCO.COM.SA:44405/sap/opu/odata/SAP/ZSCM_MDG_SER_MSTR_SRV/SMItemSet('')"
+                  }
+                }
+              ],
+              "NavReturn": [],
+              "Pilogid": "",
+              "Reccount": 1,
+              "Refasnum": "",
+              "Shortxt": "",
+              "Sshcode": "B.15.12.02",
+              "Unspsc": "71151202"
+            }
+          ],
+          "Refasnum": ""
+        },
+        "existing": [
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:58.036844",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111243"
+            },
+            "rank": 1,
+            "relevance": "59.10%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: SAND, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY  FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:57.642595",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111241"
+            },
+            "rank": 2,
+            "relevance": "56.83%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: SALT, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY  FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:57.834842",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:ANLYTL",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004111242"
+            },
+            "rank": 3,
+            "relevance": "55.60%",
+            "service_text": " PROVIDE:SERVICES:ANALYTICAL; TYPE: VAPOR PRESSURE, APPLICATION: CRUDE OIL, RATE TYPE: PER SAMPLE TEST, OPERATING AREA: SAUDI ARAMCO LABORATORY FACILITY"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:12.241308",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:CNSLTG",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004063990"
+            },
+            "rank": 4,
+            "relevance": "55.03%",
+            "service_text": " PROVIDE:SERVICES:CONSULTING; TYPE: DELIVER ASSESSMENT INSTRUMENTS, RATE TYPE: EACH"
+          },
+          {
+            "metadata": {
+              "created_at": "2025-09-16T21:54:13.443162",
+              "service_cat": "6PRS",
+              "service_class": "PRVD:SRV:CNSLTG",
+              "service_group": "993000",
+              "service_type": "O51",
+              "source": "000000000004063996"
+            },
+            "rank": 5,
+            "relevance": "54.57%",
+            "service_text": " PROVIDE:SERVICES:CONSULTING; TYPE: DEVELOPMENT ACCOUNTABILITY TOOL DELIVERY, RATE TYPE: EACH"
+          }
+        ],
+        "new": [
+          {
+            "text": "ANALYZE RISK OILFIELD, Type Operational Risk, Intended Application Is Risk Analysis For Oilfield Operations To Improve Safety And Asset Reli, Method Or Procedure Hazard Identification, Hazop, Fmea, Quantitative Risk Assessment, And, Reference Data Well Ids, Equipment Tag Numbers, And Process Flow Diagrams, Sampling Method Stratified Sampling Of Field Data And Operational Logs, Rate Type For Remuneration Will Be Time And Materials, Material Will Be Provided By Client, Tools Will Be Provided By Consultant, Transportation Will Be Arranged By Client, Operating Location Or Area Or Region Saudi Arabia \u2013 Jeddah And Spark Facilities, Materials Which Are Included Are Data Sets, Analysis Reports, Risk Matrices, Materials Which Are Excluded Are Physical Hardware, Equipment, Manpower Will Be Provided By Consultant, Applicable Standard Api 53, Iso 9001, Iso 14001, Additional Information Supports Digital Transformation And Compliance With Saudi Aramco Safet, Scope Will Be Risk Analysis Services For Oilfield Operations, Additional Activity Includes Data Collection, Hazard Identification, Risk Quantification, Mitigatio",
+            "type": "Aramco Standard"
+          },
+          {
+            "text": "ANALYZE RISK OILFIELD, Type Operational Risk, Intended Application Is Risk Analysis For Oilfield Operations To Improve Safety And Asset Reli, Method Or Procedure Hazard Identification, Hazop, Fmea, Quantitative Risk Assessment, And, Reference Data Well Ids, Equipment Tag Numbers, And Process Flow Diagrams, Sampling Method Stratified Sampling Of Field Data And Operational Logs, Rate Type For Remuneration Will Be Time And Materials, Material Will Be Provided By Client, Tools Will Be Provided By Consultant, Transportation Will Be Arranged By Client, Operating Location Or Area Or Region Saudi Arabia \u2013 Jeddah And Spark Facilities, Materials Which Are Included Are Data Sets, Analysis Reports, Risk Matrices, Materials Which Are Excluded Are Physical Hardware, Equipment, Manpower Will Be Provided By Consultant, Applicable Standard Api 53, Iso 9001, Iso 14001, Additional Information Supports Digital Transformation And Compliance With Saudi Aramco Safet, Scope Will Be Risk Analysis Services For Oilfield Operations, Additional Activity Includes Data Collection, Hazard Identification, Risk Quantification, Mitigatio",
+            "type": "Global Standard"
+          }
+        ]
       };
 
     case "validate-text":

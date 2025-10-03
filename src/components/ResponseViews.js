@@ -191,7 +191,8 @@ export const TextGenerationView = ({ response }) => (
         <div className="bg-white rounded-lg p-4 border border-orange-100">
           <h5 className="font-medium text-gray-800 mb-3">Enhanced Text</h5>
           <div className="bg-blue-50 rounded p-3 text-sm text-gray-700 leading-relaxed">
-            {response.new}
+            {/* {response.new[0]?.text} */}
+            {/* {console.log(response.new)} */}
           </div>
         </div>
       </div>
